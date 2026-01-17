@@ -2,17 +2,47 @@ name: CI
 
 on:
   push:
+    branches: [main]
   pull_request:
+    branches: [main]
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
-      - run: npm run typecheck
-      - run: npm run build
+
+      - name: Validate plugin.json
+        run: |
+          if [ ! -f ".claude-plugin/plugin.json" ]; then
+            echo "ERROR: .claude-plugin/plugin.json not found"
+            exit 1
+          fi
+          echo "plugin.json found"
+          cat .claude-plugin/plugin.json | python3 -m json.tool > /dev/null
+          echo "plugin.json is valid JSON"
+
+      - name: Validate plugin structure
+        run: |
+          echo "Checking required directories..."
+          for dir in skills commands agents templates; do
+            if [ -d "$dir" ]; then
+              echo "  Found: $dir/"
+            fi
+          done
+
+          echo "Checking skill structure..."
+          for skill in skills/*/SKILL.md; do
+            if [ -f "$skill" ]; then
+              echo "  Found: $skill"
+            fi
+          done
+
+      - name: Validate YAML files
+        run: |
+          for yaml in skills/**/examples/*.yaml skills/**/examples/*.yml; do
+            if [ -f "$yaml" ]; then
+              echo "Checking: $yaml"
+              python3 -c "import yaml; yaml.safe_load(open('$yaml'))"
+            fi
+          done

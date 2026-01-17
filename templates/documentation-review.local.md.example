@@ -1,0 +1,60 @@
+---
+# Documentation Review Plugin Configuration
+# Copy this file to: .claude/documentation-review.local.md
+
+# Documentation paths to scan (default: auto-detect)
+doc_paths:
+  - docs/
+  - README.md
+  - "*.md"
+
+# Files/patterns to ignore
+ignore:
+  - "**/node_modules/**"
+  - "**/vendor/**"
+  - "**/.git/**"
+  - "**/dist/**"
+  - "**/build/**"
+  - "CHANGELOG.md"
+
+# Documentation standards
+standards:
+  require_description: true      # First paragraph should describe purpose
+  max_heading_depth: 4           # Avoid h5, h6 for readability
+  require_code_examples: false   # Not all docs need code
+  check_links: true              # Validate internal links
+  check_spelling: false          # Disabled by default (can be slow)
+
+# API documentation settings
+api_docs:
+  openapi_path: null             # Auto-detect: openapi.yaml, swagger.json, etc.
+  asyncapi_path: null            # Auto-detect if present
+  generate_from_code: false      # Opt-in feature
+
+# Static site generator integration
+site_generator:
+  type: auto                     # auto, mkdocs, sphinx, docusaurus
+  config_path: null              # Auto-detect
+
+# Output preferences
+output:
+  verbosity: normal              # minimal, normal, detailed
+  format: markdown               # markdown, json
+---
+
+# Project Documentation Notes
+
+Add any project-specific documentation context, conventions, or notes here.
+This section is available to the documentation review agents for additional context.
+
+## Documentation Conventions
+
+- Document conventions specific to this project
+- Note any special terminology or naming patterns
+- Reference style guides if applicable
+
+## Areas of Focus
+
+- List areas that need documentation attention
+- Note any known documentation gaps
+- Highlight critical documentation dependencies

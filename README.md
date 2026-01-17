@@ -1,127 +1,196 @@
-# claude-plugin-template
+# Documentation Review Plugin
 
-A ready-to-fork template for building a **Claude Code “plugin”** using:
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Claude Code Plugin](https://img.shields.io/badge/Claude_Code-Plugin-blueviolet)](https://github.com/anthropics/claude-code)
+[![CI](https://github.com/zircote/documentation-review/actions/workflows/ci.yml/badge.svg)](https://github.com/zircote/documentation-review/actions/workflows/ci.yml)
+[![Version](https://img.shields.io/badge/version-0.1.0-green.svg)](https://github.com/zircote/documentation-review/releases)
 
-- **Claude Code project assets**: `.claude/commands`, `.claude/hooks`, `.claude/settings.json`
-- **MCP server** (Model Context Protocol) in **TypeScript** using stdio transport
-- **Team automation** in `.github/` (CI, templates, Copilot prompts/instructions)
+Comprehensive documentation management for Claude Code: review, create, update, and maintain high-quality documentation.
 
-## Quickstart
+## Features
 
-```bash
-npm install
-npm run typecheck
-npm run build
-```
+- **Documentation Review** - Analyze existing docs for accuracy, completeness, and quality
+- **Documentation Creation** - Generate new docs from codebase analysis (README, API docs, templates)
+- **Documentation Updates** - Keep docs current with codebase changes
+- **Documentation Cleanup** - Identify obsolete or outdated content
+- **Changelog Management** - Maintain CHANGELOG.md with Keep a Changelog format
+- **Quality Validation** - Automatic checks on markdown file edits
+- **Multi-format Support** - Markdown with awareness of MkDocs, Sphinx, Docusaurus
+- **API Documentation** - OpenAPI/Swagger and AsyncAPI integration
 
-Run the MCP server locally:
+## Installation
 
-```bash
-npm run dev
-# or
-npm run start
-```
-
-## Fork checklist (rename it once)
-
-- Rename the package in `package.json` and the server name/version in `src/index.ts`.
-- Update the `.mcp.json` server key (`mcpServers.<name>`) to match.
-
-## Using with Claude Code (recommended)
-
-1) Build the server:
+### From GitHub
 
 ```bash
-npm run build
+claude plugin install zircote/documentation-review
 ```
 
-2) Ensure `.mcp.json` exists at repo root (it does in this template):
+### Manual Installation
 
-```json
-{
-  "mcpServers": {
-    "claude-plugin-template": {
-      "type": "stdio",
-      "command": "node",
-      "args": ["dist/index.js"],
-      "env": {}
-    }
-  }
-}
-```
-
-3) Add/enable the MCP server in Claude Code.
-
-If you use the CLI, the flow is typically:
+Clone and add to Claude Code:
 
 ```bash
-claude mcp add claude-plugin-template -- node dist/index.js
-claude mcp list
+git clone https://github.com/zircote/documentation-review.git
+claude --plugin-dir /path/to/documentation-review
 ```
 
-Docs: https://code.claude.com/docs/en/mcp
+Or copy to your project's `.claude-plugin/` directory.
 
-## Using with Claude Desktop
+## Commands
 
-Claude Desktop MCP servers are typically configured in `claude_desktop_config.json`.
-Common location (macOS): `~/Library/Application Support/Claude/claude_desktop_config.json`.
-Docs: https://modelcontextprotocol.io/docs/develop/connect-local-servers
+| Command | Description |
+|---------|-------------|
+| `/doc-review [path]` | Review documentation for issues (file, directory, or project-wide) |
+| `/doc-create [type]` | Generate new documentation (readme, api, template) |
+| `/doc-update [path]` | Update outdated documentation with current information |
+| `/doc-cleanup` | Identify and report obsolete documentation |
+| `/doc-setup` | Interactive setup for project configuration |
+| `/changelog [action]` | Manage CHANGELOG.md (add, review, generate, preview) |
 
-## What’s included
+## Agents
 
-### 1) MCP server (`src/index.ts`)
+| Agent | Description |
+|-------|-------------|
+| `doc-reviewer` | Comprehensive documentation audit with proactive triggering |
+| `doc-writer` | Content generation and documentation updates |
 
-This template exposes:
-- Tool: `hello({ name })` → returns “Hello, <name>!”
-- Resource: `template://readme`
+## Skills
 
-Add more tools/resources in `src/index.ts`.
+- **documentation-standards** - Markdown best practices, structure guidelines, writing quality
+- **api-documentation** - OpenAPI/Swagger/AsyncAPI patterns and endpoint documentation
+- **changelog** - Keep a Changelog format, semantic-release, conventional commits mapping
 
-### 2) Claude Code commands (`.claude/commands/*`)
+## Configuration
 
-Examples included:
-- `/setup` – install + build sanity check
-- `/mcp [dev|build|start]` – run the MCP server
-- `/github:pr-review <owner/repo#PR>` – review a PR with `gh`
+Create `.claude/documentation-review.local.md` in your project root to customize behavior.
 
-Reminder: nested folders create namespaces, e.g. `.claude/commands/github/pr-review.md` ⇒ `/github:pr-review`.
-Docs: https://code.claude.com/docs/en/slash-commands
+### Quick Setup
 
-### 3) Claude Code hooks (`.claude/settings.json` + `.claude/hooks/*`)
+Run `/doc-setup` for interactive configuration, or manually create the file:
 
-This template includes a minimal **PreToolUse** Bash guard hook that blocks obviously-dangerous shell commands.
-Docs: https://code.claude.com/docs/en/hooks
+```markdown
+---
+# Documentation paths to scan (default: auto-detect)
+doc_paths:
+  - docs/
+  - README.md
+  - "*.md"
 
-### 4) “Skills” (`skills/*`)
+# Files/patterns to ignore
+ignore:
+  - "**/node_modules/**"
+  - "**/vendor/**"
+  - "**/.git/**"
+  - "**/dist/**"
+  - "**/build/**"
+  - "CHANGELOG.md"
 
-Put durable team guidance here: conventions, how-to, runbooks.
+# Documentation standards
+standards:
+  require_description: true
+  max_heading_depth: 4
+  require_code_examples: false
+  check_links: true
+  check_spelling: false
 
-### 5) GitHub automation (`.github/*`)
+# API documentation settings
+api_docs:
+  openapi_path: null           # Auto-detect
+  asyncapi_path: null          # Auto-detect
+  generate_from_code: false
 
-- CI (`.github/workflows/ci.yml`) runs `npm ci`, `typecheck`, `build`.
-- Issue templates + PR template.
-- Copilot instructions and reusable prompts.
+# Static site generator integration
+site_generator:
+  type: auto                   # auto, mkdocs, sphinx, docusaurus
+  config_path: null            # Auto-detect
 
-## Developing new features
+# Output preferences
+output:
+  verbosity: normal            # minimal, normal, detailed
+  format: markdown             # markdown, json
+---
 
-### Add a new MCP tool
+# Project Documentation Notes
 
-1) Add `server.tool(...)` in `src/index.ts`.
-2) Run:
+Add project-specific documentation context here...
+```
 
+## File Structure
+
+```
+documentation-review/
+├── .claude-plugin/
+│   └── plugin.json
+├── agents/
+│   ├── doc-reviewer.md
+│   └── doc-writer.md
+├── commands/
+│   ├── changelog.md
+│   ├── doc-cleanup.md
+│   ├── doc-create.md
+│   ├── doc-review.md
+│   ├── doc-setup.md
+│   └── doc-update.md
+├── skills/
+│   ├── api-documentation/
+│   │   ├── SKILL.md
+│   │   ├── examples/
+│   │   └── references/
+│   ├── changelog/
+│   │   ├── SKILL.md
+│   │   ├── examples/
+│   │   └── references/
+│   └── documentation-standards/
+│       ├── SKILL.md
+│       ├── examples/
+│       └── references/
+├── templates/
+│   └── documentation-review.local.md.example
+├── CHANGELOG.md
+├── LICENSE
+└── README.md
+```
+
+## Usage Examples
+
+### Review all project documentation
 ```bash
-npm run typecheck
-npm run build
+/doc-review
 ```
 
-### Add a new slash command
+### Review specific file
+```bash
+/doc-review docs/api-reference.md
+```
 
-Create: `.claude/commands/<name>.md`
+### Generate README from codebase
+```bash
+/doc-create readme
+```
 
-Use YAML frontmatter to set `description` and restrict tools via `allowed-tools`.
+### Generate API documentation
+```bash
+/doc-create api
+```
 
-## Security checklist
+### Find outdated documentation
+```bash
+/doc-cleanup
+```
 
-- Never commit tokens or API keys.
-- Prefer `env` entries in `.mcp.json` and local overrides in `.claude/settings.local.json`.
-- Keep hooks fail-open unless you’re confident about payload compatibility.
+### Add changelog entry
+```bash
+/changelog add "Added new feature X"
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+MIT

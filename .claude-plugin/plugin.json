@@ -1,0 +1,19 @@
+{
+  "name": "documentation-review",
+  "version": "0.1.0",
+  "description": "Comprehensive documentation management: review, create, update, and maintain high-quality documentation",
+  "author": {
+    "name": "zircote",
+    "url": "https://github.com/zircote"
+  },
+  "repository": "https://github.com/zircote/documentation-review",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "markdown",
+    "review",
+    "api-docs",
+    "technical-writing",
+    "quality"
+  ]
+}

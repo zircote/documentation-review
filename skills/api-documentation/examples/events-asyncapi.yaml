@@ -1,0 +1,346 @@
+# Events AsyncAPI Example
+# A well-documented event-driven API specification
+
+asyncapi: 2.6.0
+info:
+  title: Petstore Events API
+  version: 1.0.0
+  description: |
+    Event-driven API for the Petstore application.
+
+    ## Overview
+    This API provides real-time events for pet and order updates via WebSocket.
+
+    ## Connection
+    Connect to `wss://events.petstore.example.com/v1`
+
+    ## Authentication
+    Include JWT token in connection query parameter: `?token=<jwt>`
+
+  contact:
+    name: API Support
+    email: support@example.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  production:
+    url: events.petstore.example.com
+    protocol: wss
+    description: Production WebSocket server
+    security:
+      - bearerAuth: []
+
+  staging:
+    url: staging-events.petstore.example.com
+    protocol: wss
+    description: Staging WebSocket server
+    security:
+      - bearerAuth: []
+
+channels:
+  pets/created:
+    description: Events when a new pet is added to the store
+    subscribe:
+      operationId: onPetCreated
+      summary: Receive pet created events
+      message:
+        $ref: '#/components/messages/PetCreated'
+      tags:
+        - name: Pets
+
+  pets/updated:
+    description: Events when a pet's information is updated
+    subscribe:
+      operationId: onPetUpdated
+      summary: Receive pet updated events
+      message:
+        $ref: '#/components/messages/PetUpdated'
+      tags:
+        - name: Pets
+
+  pets/deleted:
+    description: Events when a pet is removed from the store
+    subscribe:
+      operationId: onPetDeleted
+      summary: Receive pet deleted events
+      message:
+        $ref: '#/components/messages/PetDeleted'
+      tags:
+        - name: Pets
+
+  pets/status-changed:
+    description: Events when a pet's availability status changes
+    subscribe:
+      operationId: onPetStatusChanged
+      summary: Receive pet status change events
+      message:
+        $ref: '#/components/messages/PetStatusChanged'
+      tags:
+        - name: Pets
+
+  orders/created:
+    description: Events when a new order is placed
+    subscribe:
+      operationId: onOrderCreated
+      summary: Receive order created events
+      message:
+        $ref: '#/components/messages/OrderCreated'
+      tags:
+        - name: Orders
+
+  orders/status-changed:
+    description: Events when an order's status changes
+    subscribe:
+      operationId: onOrderStatusChanged
+      summary: Receive order status change events
+      message:
+        $ref: '#/components/messages/OrderStatusChanged'
+      tags:
+        - name: Orders
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for WebSocket authentication
+
+  messages:
+    PetCreated:
+      name: PetCreated
+      title: Pet Created Event
+      summary: Fired when a new pet is added to the store
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/PetCreatedPayload'
+      examples:
+        - name: NewDog
+          summary: New dog added
+          payload:
+            eventId: "evt-123"
+            eventType: "pet.created"
+            timestamp: "2024-01-15T10:30:00Z"
+            data:
+              id: "pet-456"
+              name: "Buddy"
+              species: "dog"
+              status: "available"
+
+    PetUpdated:
+      name: PetUpdated
+      title: Pet Updated Event
+      summary: Fired when a pet's information is updated
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/PetUpdatedPayload'
+      examples:
+        - name: UpdatedAge
+          summary: Pet age updated
+          payload:
+            eventId: "evt-124"
+            eventType: "pet.updated"
+            timestamp: "2024-01-15T11:00:00Z"
+            data:
+              id: "pet-456"
+              changes:
+                - field: "age"
+                  oldValue: 2
+                  newValue: 3
+
+    PetDeleted:
+      name: PetDeleted
+      title: Pet Deleted Event
+      summary: Fired when a pet is removed from the store
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/PetDeletedPayload'
+
+    PetStatusChanged:
+      name: PetStatusChanged
+      title: Pet Status Changed Event
+      summary: Fired when a pet's availability status changes
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/PetStatusChangedPayload'
+      examples:
+        - name: PetSold
+          summary: Pet marked as sold
+          payload:
+            eventId: "evt-125"
+            eventType: "pet.status_changed"
+            timestamp: "2024-01-15T12:00:00Z"
+            data:
+              petId: "pet-456"
+              oldStatus: "available"
+              newStatus: "sold"
+
+    OrderCreated:
+      name: OrderCreated
+      title: Order Created Event
+      summary: Fired when a new order is placed
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/OrderCreatedPayload'
+
+    OrderStatusChanged:
+      name: OrderStatusChanged
+      title: Order Status Changed Event
+      summary: Fired when an order's status changes
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/OrderStatusChangedPayload'
+
+  schemas:
+    EventBase:
+      type: object
+      required:
+        - eventId
+        - eventType
+        - timestamp
+      properties:
+        eventId:
+          type: string
+          format: uuid
+          description: Unique event identifier
+        eventType:
+          type: string
+          description: Type of event
+        timestamp:
+          type: string
+          format: date-time
+          description: When the event occurred
+
+    PetCreatedPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventBase'
+        - type: object
+          properties:
+            eventType:
+              const: "pet.created"
+            data:
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+                species:
+                  type: string
+                status:
+                  type: string
+                  enum: [available, pending, sold]
+
+    PetUpdatedPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventBase'
+        - type: object
+          properties:
+            eventType:
+              const: "pet.updated"
+            data:
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                changes:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      field:
+                        type: string
+                      oldValue: {}
+                      newValue: {}
+
+    PetDeletedPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventBase'
+        - type: object
+          properties:
+            eventType:
+              const: "pet.deleted"
+            data:
+              type: object
+              properties:
+                petId:
+                  type: string
+                  format: uuid
+                deletedAt:
+                  type: string
+                  format: date-time
+
+    PetStatusChangedPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventBase'
+        - type: object
+          properties:
+            eventType:
+              const: "pet.status_changed"
+            data:
+              type: object
+              properties:
+                petId:
+                  type: string
+                  format: uuid
+                oldStatus:
+                  type: string
+                  enum: [available, pending, sold]
+                newStatus:
+                  type: string
+                  enum: [available, pending, sold]
+
+    OrderCreatedPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventBase'
+        - type: object
+          properties:
+            eventType:
+              const: "order.created"
+            data:
+              type: object
+              properties:
+                orderId:
+                  type: string
+                  format: uuid
+                customerId:
+                  type: string
+                  format: uuid
+                petIds:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                totalAmount:
+                  type: number
+                  format: decimal
+
+    OrderStatusChangedPayload:
+      allOf:
+        - $ref: '#/components/schemas/EventBase'
+        - type: object
+          properties:
+            eventType:
+              const: "order.status_changed"
+            data:
+              type: object
+              properties:
+                orderId:
+                  type: string
+                  format: uuid
+                oldStatus:
+                  type: string
+                  enum: [pending, confirmed, shipped, delivered, cancelled]
+                newStatus:
+                  type: string
+                  enum: [pending, confirmed, shipped, delivered, cancelled]
+
+tags:
+  - name: Pets
+    description: Pet-related events
+  - name: Orders
+    description: Order-related events

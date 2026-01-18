@@ -7,6 +7,33 @@
 
 Comprehensive documentation management for Claude Code: review, create, update, and maintain high-quality documentation.
 
+<!-- Infographic: Visual summary of plugin capabilities -->
+<p align="center">
+  <img src=".github/infographic.png" alt="Documentation Review Plugin Overview" width="800">
+</p>
+
+<details>
+<summary>View infographic generation prompt</summary>
+
+```
+Create a visual infographic summarizing the Documentation Review plugin for Claude Code.
+
+Layout: Clean, modern infographic style (1200x800px)
+Background: Light cream/off-white with subtle texture
+
+Sections:
+1. HEADER: "Documentation Review" - Claude Code Plugin for Documentation Excellence
+2. CORE CAPABILITIES (4 quadrants): Review, Create, Update, Cleanup
+3. SUPPORTED FORMATS: Markdown, MkDocs, Sphinx, Docusaurus, OpenAPI, AsyncAPI
+4. KEY COMMANDS: /doc-review → /doc-create → /doc-update → /changelog
+5. FOOTER: AI-Powered • MIT License • v0.1.0
+
+Color palette: Warm amber (#F59E0B), deep teal (#0D9488), coral (#F97316), cream (#FFFBEB)
+Style: Professional, clean lines, rounded corners, subtle shadows
+```
+
+</details>
+
 ## Features
 
 - **Documentation Review** - Analyze existing docs for accuracy, completeness, and quality

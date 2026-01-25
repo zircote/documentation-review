@@ -1,7 +1,7 @@
 ---
 description: Update outdated documentation with current information
 argument-hint: "[path]"
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash(git:*)
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash(git:*), Bash(rg:*)
 ---
 
 Update documentation to reflect current codebase state.
@@ -12,6 +12,20 @@ $IF($1,
   Update: @$1,
   Identify all outdated documentation in project
 )
+
+## Pre-Update: Check Memory
+
+Before updating, search mnemonic for relevant context:
+
+```bash
+# Check for prior update patterns
+rg -i "update|drift|sync" ~/.claude/mnemonic/*/patterns/ --glob "*.memory.md" -l | head -5
+
+# Check for known documentation quirks or exceptions
+rg -i "exception|special|quirk" ~/.claude/mnemonic/*/learnings/ --glob "*.memory.md" -l | head -5
+```
+
+Apply found context to inform the update process.
 
 ## Update Process
 

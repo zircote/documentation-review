@@ -1,7 +1,7 @@
 ---
 description: Manage CHANGELOG.md entries and release documentation
 argument-hint: "<action: add|review|generate|preview>"
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash(git:*)
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash(git:*), Bash(rg:*)
 ---
 
 Manage changelog entries and release documentation.
@@ -16,6 +16,20 @@ $IF($1,
   - generate: Generate changelog from git commits
   - preview: Preview upcoming release notes
 )
+
+## Pre-Action: Check Memory
+
+Before any changelog action, search mnemonic for context:
+
+```bash
+# Check for release/versioning decisions
+rg -i "release|version|changelog" ~/.claude/mnemonic/*/decisions/ --glob "*.memory.md" -l | head -5
+
+# Check for changelog format preferences
+rg -i "changelog|format|entry" ~/.claude/mnemonic/*/patterns/ --glob "*.memory.md" -l | head -5
+```
+
+Apply found context to maintain consistency with prior releases.
 
 ## Actions
 

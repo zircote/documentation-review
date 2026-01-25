@@ -6,6 +6,19 @@ version: 0.1.0
 
 # API Documentation
 
+## Pre-Application: Check Memory
+
+Before applying API documentation patterns, search mnemonic for project context:
+
+```bash
+# Check for project API conventions
+rg -i "api|openapi|endpoint" ~/.claude/mnemonic/*/patterns/ --glob "*.memory.md" -l | head -5
+```
+
+Apply any found project-specific API documentation patterns.
+
+---
+
 Guidance for creating comprehensive API documentation using OpenAPI/Swagger, AsyncAPI, and manual documentation patterns.
 
 ## OpenAPI/Swagger Overview

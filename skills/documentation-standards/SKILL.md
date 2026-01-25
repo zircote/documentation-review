@@ -6,6 +6,19 @@ version: 0.1.0
 
 # Documentation Standards
 
+## Pre-Application: Check Memory
+
+Before applying standards, search mnemonic for project-specific overrides:
+
+```bash
+# Check for project-specific standard decisions
+rg -i "standard|style|convention" ~/.claude/mnemonic/*/decisions/ --glob "*.memory.md" -l | head -5
+```
+
+Apply any found project-specific standards in addition to these defaults.
+
+---
+
 Guidance for creating, reviewing, and improving technical documentation with focus on quality, clarity, and maintainability.
 
 ## Core Quality Principles

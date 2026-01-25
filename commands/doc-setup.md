@@ -1,6 +1,6 @@
 ---
 description: Interactive setup for documentation review configuration
-allowed-tools: Read, Write, Glob, Bash(mkdir:*)
+allowed-tools: Read, Write, Glob, Bash(mkdir:*), Bash(rg:*), Bash(cat:*), Bash(uuidgen:*)
 ---
 
 Create or update the documentation review configuration file interactively.
@@ -150,4 +150,47 @@ Edit `.claude/documentation-review.local.md` directly to:
 - Add custom ignore patterns
 - Adjust quality thresholds
 - Add project-specific context
+```
+
+## Post-Setup: Capture Configuration Decision
+
+After creating configuration, capture the decision to mnemonic:
+
+```bash
+UUID=$(uuidgen | tr '[:upper:]' '[:lower:]')
+DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+SLUG="doc-review-config"
+
+mkdir -p ~/.claude/mnemonic/default/decisions/user
+
+cat > ~/.claude/mnemonic/default/decisions/user/${UUID}-${SLUG}.memory.md << MEMORY
+---
+id: ${UUID}
+type: semantic
+namespace: decisions/user
+created: ${DATE}
+title: "Documentation Review Configuration"
+tags:
+  - configuration
+  - documentation-review
+  - setup
+---
+
+# Documentation Review Configuration Decision
+
+## Level 1: Quick Answer
+Configured documentation review with [paths] and [standards level].
+
+## Level 2: Context
+- Documentation paths: [configured paths]
+- Standards level: [configured level]
+- Site generator: [if detected]
+
+## Level 3: Full Detail
+### Rationale
+[Why these settings were chosen]
+
+### Configuration
+[Summary of key configuration choices]
+MEMORY
 ```

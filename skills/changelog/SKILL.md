@@ -6,6 +6,19 @@ version: 0.1.0
 
 # Changelog Management Skill
 
+## Pre-Application: Check Memory
+
+Before managing changelog, search mnemonic for release context:
+
+```bash
+# Check for release versioning decisions
+rg -i "release|version|semver" ~/.claude/mnemonic/*/decisions/ --glob "*.memory.md" -l | head -5
+```
+
+Apply any found project-specific versioning or changelog patterns.
+
+---
+
 This skill helps you generate and maintain changelogs using semantic-release and conventional commits.
 
 ## When to Use This Skill

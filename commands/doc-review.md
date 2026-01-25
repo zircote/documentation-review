@@ -1,7 +1,7 @@
 ---
 description: Review documentation for quality, accuracy, and completeness
 argument-hint: "[path]"
-allowed-tools: Read, Glob, Grep, Bash(git:*)
+allowed-tools: Read, Glob, Grep, Bash(git:*), Bash(rg:*)
 ---
 
 Review documentation for quality issues.
@@ -12,6 +12,20 @@ $IF($1,
   Focus on: @$1,
   Scan all documentation in configured paths
 )
+
+## Pre-Review: Check Memory
+
+Before reviewing, search mnemonic for relevant context:
+
+```bash
+# Check for prior review patterns and known issues
+rg -i "documentation|review|quality" ~/.claude/mnemonic/*/patterns/ --glob "*.memory.md" -l | head -5
+
+# Check for project-specific standards or exceptions
+rg -i "standard|exception|ignore" ~/.claude/mnemonic/*/decisions/ --glob "*.memory.md" -l | head -5
+```
+
+Apply found context to inform the review process.
 
 ## Configuration Check
 

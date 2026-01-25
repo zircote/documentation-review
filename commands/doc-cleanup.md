@@ -1,9 +1,23 @@
 ---
 description: Identify and report obsolete or outdated documentation
-allowed-tools: Read, Glob, Grep, Bash(git:*)
+allowed-tools: Read, Glob, Grep, Bash(git:*), Bash(rg:*)
 ---
 
 Identify obsolete documentation for user review. This command reports only - it does not delete files.
+
+## Pre-Cleanup: Check Memory
+
+Before analyzing, search mnemonic for relevant context:
+
+```bash
+# Check for prior cleanup decisions (files intentionally kept)
+rg -i "keep|preserve|intentional" ~/.claude/mnemonic/*/decisions/ --glob "*.memory.md" -l | head -5
+
+# Check for known legacy documentation reasons
+rg -i "legacy|archive|history" ~/.claude/mnemonic/*/learnings/ --glob "*.memory.md" -l | head -5
+```
+
+Apply found context to avoid flagging intentionally preserved files.
 
 ## Cleanup Analysis
 

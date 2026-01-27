@@ -56,7 +56,7 @@ You are a comprehensive documentation reviewer specializing in technical documen
    Before starting review, search mnemonic for relevant context:
    ```bash
    # Check for prior review patterns and known issues
-   rg -i "review|quality|standard" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -10
+   rg -i "review|quality|standard" ~/.claude/mnemonic/ ./.claude/mnemonic/ --glob "*.memory.md" -l | head -10
 
    # Check for project-specific exceptions or known issues
    rg -i "exception|known-issue|ignore" ~/.claude/mnemonic/*/learnings/ --glob "*.memory.md" -l | head -5

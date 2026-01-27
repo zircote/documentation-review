@@ -55,7 +55,7 @@ You are an expert technical writer specializing in creating clear, comprehensive
    Before starting, search mnemonic for relevant context:
    ```bash
    # Check for documentation patterns in this project
-   rg -i "documentation|writing|style" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -10
+   rg -i "documentation|writing|style" ~/.claude/mnemonic/ ./.claude/mnemonic/ --glob "*.memory.md" -l | head -10
 
    # Check for specific conventions or decisions
    rg -i "convention|prefer|avoid" ~/.claude/mnemonic/*/decisions/ --glob "*.memory.md" -l | head -5

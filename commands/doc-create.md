@@ -4,6 +4,11 @@ argument-hint: "<type: readme|api|template>"
 allowed-tools: Read, Write, Glob, Grep, Bash(git:*), Bash(rg:*), Bash(mkdir:*), Bash(cat:*), Bash(uuidgen:*)
 ---
 
+## Memory
+
+Search first: `rg -i "{topic}" ~/.claude/mnemonic/ ./.claude/mnemonic/ --glob "*.memory.md"`
+Capture after: `/mnemonic:capture learnings "{title}"`
+
 Generate new documentation based on codebase analysis.
 
 ## Documentation Type
@@ -15,20 +20,6 @@ $IF($1,
   - api: Generate API documentation from code/specs
   - template: Create documentation from standard templates
 )
-
-## Pre-Generation: Check Memory
-
-Before generating documentation, search mnemonic for relevant context:
-
-```bash
-# Check for existing documentation patterns
-rg -i "documentation|readme|api-doc" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -5
-
-# Check for project-specific documentation decisions
-rg -i "doc|writing|style" ~/.claude/mnemonic/*/decisions/ --glob "*.memory.md" -l | head -5
-```
-
-Apply any found patterns or preferences to the generation.
 
 ## Generation Workflows
 
@@ -144,41 +135,3 @@ Report what was created:
 3. Run /doc-review to validate
 ```
 
-## Post-Creation: Capture to Mnemonic
-
-After successfully creating documentation, capture the pattern to mnemonic:
-
-```bash
-UUID=$(uuidgen | tr '[:upper:]' '[:lower:]')
-DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-SLUG="doc-creation-[type]"
-
-mkdir -p ~/.claude/mnemonic/default/patterns/user
-
-cat > ~/.claude/mnemonic/default/patterns/user/${UUID}-${SLUG}.memory.md << MEMORY
----
-id: ${UUID}
-type: procedural
-namespace: patterns/user
-created: ${DATE}
-title: "Documentation Creation Pattern: [type]"
-tags:
-  - documentation
-  - [type]
-  - generation
----
-
-# Documentation Creation Pattern
-
-## Level 1: Quick Answer
-Created [type] documentation with [sections] structure.
-
-## Level 2: Context
-- File: [path]
-- Sections: [list of sections created]
-- Style: [any style decisions made]
-
-## Level 3: Full Detail
-[Capture structure, sections used, and any project-specific adaptations]
-MEMORY
-```

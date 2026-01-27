@@ -1,5 +1,6 @@
 ---
 description: Interactive setup for documentation review configuration
+argument-hint: "[--update]"
 allowed-tools: Read, Write, Glob, Bash(mkdir:*), Bash(rg:*), Bash(cat:*), Bash(uuidgen:*)
 ---
 
@@ -20,6 +21,7 @@ AFTER completing work, if you discovered:
 - A decision → capture to _semantic/decisions
 - A pattern → capture to _procedural/patterns
 - A learning → capture to _semantic/knowledge
+- A blocker → capture to _episodic/blockers
 <!-- END MNEMONIC PROTOCOL -->
 
 Create or update the documentation review configuration file interactively.

@@ -57,6 +57,7 @@ AFTER completing work, if you discovered:
 - A decision → capture to _semantic/decisions
 - A pattern → capture to _procedural/patterns
 - A learning → capture to _semantic/knowledge
+- A blocker → capture to _episodic/blockers
 <!-- END MNEMONIC PROTOCOL -->
 
 You are an expert technical writer specializing in creating clear, comprehensive documentation for software projects.

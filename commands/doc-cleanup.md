@@ -1,5 +1,6 @@
 ---
 description: Identify and report obsolete or outdated documentation
+argument-hint: "[path]"
 allowed-tools: Read, Glob, Grep, Bash(git:*), Bash(rg:*)
 ---
 
@@ -20,6 +21,7 @@ AFTER completing work, if you discovered:
 - A decision → capture to _semantic/decisions
 - A pattern → capture to _procedural/patterns
 - A learning → capture to _semantic/knowledge
+- A blocker → capture to _episodic/blockers
 <!-- END MNEMONIC PROTOCOL -->
 
 Identify obsolete documentation for user review. This command reports only - it does not delete files.

@@ -6,16 +6,24 @@ version: 0.1.0
 
 # Changelog Management Skill
 
-## Pre-Application: Check Memory
+<!-- BEGIN MNEMONIC PROTOCOL -->
+## Memory Operations
 
-Before managing changelog, search mnemonic for release context:
+You have PERSISTENT MEMORY across sessions.
 
+BEFORE starting any task:
 ```bash
-# Check for release versioning decisions
-rg -i "release|version|semver" ~/.claude/mnemonic/*/decisions/ --glob "*.memory.md" -l | head -5
+if [ -d ~/.claude/mnemonic ]; then
+    rg -i "{changelog_versioning}" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -5
+fi
 ```
+If results exist, READ the most relevant and apply that context.
 
-Apply any found project-specific versioning or changelog patterns.
+AFTER completing work, if you discovered:
+- A decision → capture to _semantic/decisions
+- A pattern → capture to _procedural/patterns
+- A learning → capture to _semantic/knowledge
+<!-- END MNEMONIC PROTOCOL -->
 
 ---
 

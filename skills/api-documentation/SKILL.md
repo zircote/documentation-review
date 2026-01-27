@@ -6,16 +6,24 @@ version: 0.1.0
 
 # API Documentation
 
-## Pre-Application: Check Memory
+<!-- BEGIN MNEMONIC PROTOCOL -->
+## Memory Operations
 
-Before applying API documentation patterns, search mnemonic for project context:
+You have PERSISTENT MEMORY across sessions.
 
+BEFORE starting any task:
 ```bash
-# Check for project API conventions
-rg -i "api|openapi|endpoint" ~/.claude/mnemonic/*/patterns/ --glob "*.memory.md" -l | head -5
+if [ -d ~/.claude/mnemonic ]; then
+    rg -i "{api_documentation}" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -5
+fi
 ```
+If results exist, READ the most relevant and apply that context.
 
-Apply any found project-specific API documentation patterns.
+AFTER completing work, if you discovered:
+- A decision → capture to _semantic/decisions
+- A pattern → capture to _procedural/patterns
+- A learning → capture to _semantic/knowledge
+<!-- END MNEMONIC PROTOCOL -->
 
 ---
 

@@ -4,6 +4,25 @@ argument-hint: "<action: add|review|generate|preview>"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash(git:*), Bash(rg:*)
 ---
 
+<!-- BEGIN MNEMONIC PROTOCOL -->
+## Memory Operations
+
+You have PERSISTENT MEMORY across sessions.
+
+BEFORE starting any task:
+```bash
+if [ -d ~/.claude/mnemonic ]; then
+    rg -i "{changelog_release}" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -5
+fi
+```
+If results exist, READ the most relevant and apply that context.
+
+AFTER completing work, if you discovered:
+- A decision → capture to _semantic/decisions
+- A pattern → capture to _procedural/patterns
+- A learning → capture to _semantic/knowledge
+<!-- END MNEMONIC PROTOCOL -->
+
 Manage changelog entries and release documentation.
 
 ## Action
@@ -16,20 +35,6 @@ $IF($1,
   - generate: Generate changelog from git commits
   - preview: Preview upcoming release notes
 )
-
-## Pre-Action: Check Memory
-
-Before any changelog action, search mnemonic for context:
-
-```bash
-# Check for release/versioning decisions
-rg -i "release|version|changelog" ~/.claude/mnemonic/*/decisions/ --glob "*.memory.md" -l | head -5
-
-# Check for changelog format preferences
-rg -i "changelog|format|entry" ~/.claude/mnemonic/*/patterns/ --glob "*.memory.md" -l | head -5
-```
-
-Apply found context to maintain consistency with prior releases.
 
 ## Actions
 

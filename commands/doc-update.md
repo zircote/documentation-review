@@ -4,6 +4,25 @@ argument-hint: "[path]"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash(git:*), Bash(rg:*)
 ---
 
+<!-- BEGIN MNEMONIC PROTOCOL -->
+## Memory Operations
+
+You have PERSISTENT MEMORY across sessions.
+
+BEFORE starting any task:
+```bash
+if [ -d ~/.claude/mnemonic ]; then
+    rg -i "{documentation_update}" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -5
+fi
+```
+If results exist, READ the most relevant and apply that context.
+
+AFTER completing work, if you discovered:
+- A decision → capture to _semantic/decisions
+- A pattern → capture to _procedural/patterns
+- A learning → capture to _semantic/knowledge
+<!-- END MNEMONIC PROTOCOL -->
+
 Update documentation to reflect current codebase state.
 
 ## Target Scope
@@ -12,20 +31,6 @@ $IF($1,
   Update: @$1,
   Identify all outdated documentation in project
 )
-
-## Pre-Update: Check Memory
-
-Before updating, search mnemonic for relevant context:
-
-```bash
-# Check for prior update patterns
-rg -i "update|drift|sync" ~/.claude/mnemonic/*/patterns/ --glob "*.memory.md" -l | head -5
-
-# Check for known documentation quirks or exceptions
-rg -i "exception|special|quirk" ~/.claude/mnemonic/*/learnings/ --glob "*.memory.md" -l | head -5
-```
-
-Apply found context to inform the update process.
 
 ## Update Process
 

@@ -3,21 +3,26 @@ description: Identify and report obsolete or outdated documentation
 allowed-tools: Read, Glob, Grep, Bash(git:*), Bash(rg:*)
 ---
 
-Identify obsolete documentation for user review. This command reports only - it does not delete files.
+<!-- BEGIN MNEMONIC PROTOCOL -->
+## Memory Operations
 
-## Pre-Cleanup: Check Memory
+You have PERSISTENT MEMORY across sessions.
 
-Before analyzing, search mnemonic for relevant context:
-
+BEFORE starting any task:
 ```bash
-# Check for prior cleanup decisions (files intentionally kept)
-rg -i "keep|preserve|intentional" ~/.claude/mnemonic/*/decisions/ --glob "*.memory.md" -l | head -5
-
-# Check for known legacy documentation reasons
-rg -i "legacy|archive|history" ~/.claude/mnemonic/*/learnings/ --glob "*.memory.md" -l | head -5
+if [ -d ~/.claude/mnemonic ]; then
+    rg -i "{documentation_cleanup}" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -5
+fi
 ```
+If results exist, READ the most relevant and apply that context.
 
-Apply found context to avoid flagging intentionally preserved files.
+AFTER completing work, if you discovered:
+- A decision → capture to _semantic/decisions
+- A pattern → capture to _procedural/patterns
+- A learning → capture to _semantic/knowledge
+<!-- END MNEMONIC PROTOCOL -->
+
+Identify obsolete documentation for user review. This command reports only - it does not delete files.
 
 ## Cleanup Analysis
 

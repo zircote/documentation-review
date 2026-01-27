@@ -6,16 +6,24 @@ version: 0.1.0
 
 # Documentation Standards
 
-## Pre-Application: Check Memory
+<!-- BEGIN MNEMONIC PROTOCOL -->
+## Memory Operations
 
-Before applying standards, search mnemonic for project-specific overrides:
+You have PERSISTENT MEMORY across sessions.
 
+BEFORE starting any task:
 ```bash
-# Check for project-specific standard decisions
-rg -i "standard|style|convention" ~/.claude/mnemonic/*/decisions/ --glob "*.memory.md" -l | head -5
+if [ -d ~/.claude/mnemonic ]; then
+    rg -i "{documentation_standards}" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -5
+fi
 ```
+If results exist, READ the most relevant and apply that context.
 
-Apply any found project-specific standards in addition to these defaults.
+AFTER completing work, if you discovered:
+- A decision → capture to _semantic/decisions
+- A pattern → capture to _procedural/patterns
+- A learning → capture to _semantic/knowledge
+<!-- END MNEMONIC PROTOCOL -->
 
 ---
 

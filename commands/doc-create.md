@@ -4,10 +4,24 @@ argument-hint: "<type: readme|api|template>"
 allowed-tools: Read, Write, Glob, Grep, Bash(git:*), Bash(rg:*), Bash(mkdir:*), Bash(cat:*), Bash(uuidgen:*)
 ---
 
-## Memory
+<!-- BEGIN MNEMONIC PROTOCOL -->
+## Memory Operations
 
-Search first: `rg -i "{topic}" ~/.claude/mnemonic/ ./.claude/mnemonic/ --glob "*.memory.md"`
-Capture after: `/mnemonic:capture learnings "{title}"`
+You have PERSISTENT MEMORY across sessions.
+
+BEFORE starting any task:
+```bash
+if [ -d ~/.claude/mnemonic ]; then
+    rg -i "{documentation_type}" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -5
+fi
+```
+If results exist, READ the most relevant and apply that context.
+
+AFTER completing work, if you discovered:
+- A decision → capture to _semantic/decisions
+- A pattern → capture to _procedural/patterns
+- A learning → capture to _semantic/knowledge
+<!-- END MNEMONIC PROTOCOL -->
 
 Generate new documentation based on codebase analysis.
 

@@ -4,6 +4,25 @@ argument-hint: "[path]"
 allowed-tools: Read, Glob, Grep, Bash(git:*), Bash(rg:*)
 ---
 
+<!-- BEGIN MNEMONIC PROTOCOL -->
+## Memory Operations
+
+You have PERSISTENT MEMORY across sessions.
+
+BEFORE starting any task:
+```bash
+if [ -d ~/.claude/mnemonic ]; then
+    rg -i "{documentation_review}" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -5
+fi
+```
+If results exist, READ the most relevant and apply that context.
+
+AFTER completing work, if you discovered:
+- A decision → capture to _semantic/decisions
+- A pattern → capture to _procedural/patterns
+- A learning → capture to _semantic/knowledge
+<!-- END MNEMONIC PROTOCOL -->
+
 Review documentation for quality issues.
 
 ## Target Scope
@@ -12,20 +31,6 @@ $IF($1,
   Focus on: @$1,
   Scan all documentation in configured paths
 )
-
-## Pre-Review: Check Memory
-
-Before reviewing, search mnemonic for relevant context:
-
-```bash
-# Check for prior review patterns and known issues
-rg -i "documentation|review|quality" ~/.claude/mnemonic/*/patterns/ --glob "*.memory.md" -l | head -5
-
-# Check for project-specific standards or exceptions
-rg -i "standard|exception|ignore" ~/.claude/mnemonic/*/decisions/ --glob "*.memory.md" -l | head -5
-```
-
-Apply found context to inform the review process.
 
 ## Configuration Check
 

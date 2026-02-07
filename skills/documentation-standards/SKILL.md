@@ -1,6 +1,7 @@
 ---
-name: documentation-standards
+name: Documentation Standards
 description: This skill should be used when the user asks to "review documentation", "improve docs quality", "check markdown formatting", "fix documentation structure", "write better docs", "documentation best practices", or needs guidance on documentation quality, structure, formatting, or technical writing standards.
+version: 0.1.0
 ---
 
 # Documentation Standards

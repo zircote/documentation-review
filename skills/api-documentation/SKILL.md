@@ -1,5 +1,5 @@
 ---
-name: api-documentation
+name: API Documentation
 description: This skill should be used when the user asks to "document an API", "create API docs", "generate OpenAPI spec", "review API documentation", "document REST endpoints", "create Swagger docs", "document AsyncAPI", "improve endpoint documentation", or needs guidance on API specification formats, endpoint documentation patterns, or API reference writing.
 version: 0.1.0
 ---

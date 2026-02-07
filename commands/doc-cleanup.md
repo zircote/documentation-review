@@ -1,4 +1,5 @@
 ---
+name: doc-cleanup
 description: Identify and report obsolete or outdated documentation
 argument-hint: "[path]"
 allowed-tools: Read, Glob, Grep, Bash(git:*), Bash(rg:*)

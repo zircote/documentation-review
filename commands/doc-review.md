@@ -1,4 +1,5 @@
 ---
+name: doc-review
 description: Review documentation for quality, accuracy, and completeness
 argument-hint: "[path]"
 allowed-tools: Read, Glob, Grep, Bash(git:*), Bash(rg:*)

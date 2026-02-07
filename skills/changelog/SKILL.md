@@ -1,7 +1,6 @@
 ---
-name: Changelog Management
+name: changelog
 description: This skill should be used when the user asks to "update changelog", "add changelog entry", "prepare release notes", "document version changes", "generate changelog", "review release history", "create release entry", or needs guidance on Keep a Changelog format, semantic-release configuration, conventional commits mapping, or version documentation best practices.
-version: 0.1.0
 ---
 
 # Changelog Management Skill

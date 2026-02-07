@@ -1,4 +1,5 @@
 ---
+name: doc-setup
 description: Interactive setup for documentation review configuration
 argument-hint: "[--update]"
 allowed-tools: Read, Write, Glob, Bash(mkdir:*), Bash(rg:*), Bash(cat:*), Bash(uuidgen:*)

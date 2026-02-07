@@ -1,4 +1,5 @@
 ---
+name: doc-create
 description: Generate new documentation from codebase analysis
 argument-hint: "<type: readme|api|template>"
 allowed-tools: Read, Write, Glob, Grep, Bash(git:*), Bash(rg:*), Bash(mkdir:*), Bash(cat:*), Bash(uuidgen:*)

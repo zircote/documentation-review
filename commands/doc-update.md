@@ -1,4 +1,5 @@
 ---
+name: doc-update
 description: Update outdated documentation with current information
 argument-hint: "[path]"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash(git:*), Bash(rg:*)

@@ -95,13 +95,23 @@ Use Grep and Read to:
 - Mark deprecated features
 - Add migration notes
 
-### 4. Apply Updates
+### 4. Diátaxis Drift Check (when `diataxis.enabled` in config)
+
+Before applying changes, check for quadrant drift:
+- Read the document's `diataxis_type` from frontmatter (or classify if missing)
+- Evaluate whether the proposed changes introduce content from a different quadrant
+- Flag drift: "This addition is [explanation/reference] content being added to a [tutorial/how-to]"
+- Suggest extraction: recommend creating a separate document in the correct quadrant
+- Use the diataxis skill for classification compass and mode mixing detection
+
+### 5. Apply Updates
 
 Use Edit tool to:
 - Update specific sections
 - Preserve document structure
 - Maintain formatting consistency
 - Add change markers if requested
+- Maintain Diátaxis quadrant alignment when enabled
 
 ### 5. Validation
 

@@ -73,6 +73,14 @@ Otherwise, use default paths: `docs/`, `README.md`, `*.md`
    - Validate table structure
    - Assess whitespace usage
 
+   **Diátaxis Alignment** (when `diataxis.enabled` in config)
+   - Classify each document into its Diátaxis quadrant (tutorial, how-to, reference, explanation)
+   - Check for `diataxis_type` frontmatter — flag if missing (when `require_frontmatter: true`)
+   - Score mode purity — flag sections where content drifts into another quadrant
+   - Evaluate cross-references between quadrants
+   - Apply strictness level from config: advisory (suggestions), standard (flagged issues), strict (errors)
+   - Use the `diataxis` skill for classification compass and quality criteria
+
 3. **Generate Report**
 
    Organize findings by severity:
@@ -129,3 +137,4 @@ Otherwise, use default paths: `docs/`, `README.md`, `*.md`
 ```
 
 Use the documentation-standards skill for detailed review criteria.
+Use the diataxis skill for Diátaxis framework classification and quality criteria.

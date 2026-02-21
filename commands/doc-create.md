@@ -36,6 +36,25 @@ $IF($1,
   - template: Create documentation from standard templates
 )
 
+## Diátaxis Quadrant Selection (when `diataxis.enabled` in config)
+
+Before generating content, determine the Diátaxis quadrant:
+
+1. **Check if the documentation type maps to a quadrant:**
+   - readme → typically mixed (overview), flag for later splitting
+   - api → Reference quadrant
+   - template → depends on template type
+
+2. **Ask the user which quadrant the document serves:**
+   - Tutorial: learning-oriented, guided experience
+   - How-to: task-oriented, solve a specific problem
+   - Reference: information-oriented, technical descriptions
+   - Explanation: understanding-oriented, context and background
+
+3. **Apply the quadrant's structure template** from the `diataxis` skill
+4. **Set `diataxis_type` in frontmatter** of the generated document
+5. **Use the quadrant's tone and style** guidelines during generation
+
 ## Generation Workflows
 
 ### README Generation (type: readme)
@@ -122,6 +141,12 @@ After generation:
    - Proper heading hierarchy
    - Consistent formatting
    - Complete sections
+
+   When Diátaxis is enabled, also validate:
+   - Content stays within the chosen quadrant (mode purity)
+   - Cross-references to other quadrants are included
+   - Frontmatter includes `diataxis_type`
+   Use the diataxis skill for quadrant templates and quality criteria.
 
 3. **Preview for User**
    Show generated content summary:

@@ -122,12 +122,22 @@ Check for:
 | README.md | ./docs/old-guide.md | Internal |
 | docs/api.md | #deprecated-section | Anchor |
 
+## Diátaxis Gap Analysis (when `diataxis.enabled` in config)
+
+| Feature/Component | Tutorial | How-to | Reference | Explanation |
+|-------------------|----------|--------|-----------|-------------|
+| [feature]         | Yes      | -      | Yes       | -           |
+
+### Priority Gaps
+1. [Feature]: Missing [quadrant] — [user impact]
+
 ## Recommended Actions
 
 1. **Remove** (high confidence): [list of files]
 2. **Consolidate**: [duplicates to merge]
 3. **Update**: [files with broken references]
 4. **Investigate**: [uncertain files]
+5. **Create** (Diátaxis gaps): [missing quadrant documents to create]
 
 ## Important Notes
 

@@ -36,6 +36,18 @@ site_generator:
   type: auto                     # auto, mkdocs, sphinx, docusaurus
   config_path: null              # Auto-detect
 
+# Diátaxis framework settings
+diataxis:
+  enabled: false                   # Enable Diátaxis framework enforcement
+  strictness: standard             # advisory (suggestions), standard (flag issues), strict (errors)
+  require_frontmatter: true        # Require diataxis_type in doc frontmatter
+  doc_paths: []                    # Paths to scan (empty = use top-level doc_paths)
+  quadrant_directories:            # Optional: organize docs by quadrant directory
+    tutorials: null                # e.g. docs/tutorials/
+    how-to: null                   # e.g. docs/guides/
+    reference: null                # e.g. docs/reference/
+    explanation: null              # e.g. docs/explanation/
+
 # Output preferences
 output:
   verbosity: normal              # minimal, normal, detailed

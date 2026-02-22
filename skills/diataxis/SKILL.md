@@ -444,8 +444,8 @@ The Diátaxis skill reads configuration from `.claude/documentation-review.local
 
 ```yaml
 diataxis:
-  enabled: true                    # Enable Diátaxis framework enforcement
-  strictness: standard             # advisory | standard | strict
+  enabled: true                    # Default: true — Diátaxis is enabled for all projects
+  strictness: strict               # Default: strict — advisory | standard | strict
   require_frontmatter: true        # Require diataxis_type in doc frontmatter
   doc_paths: []                    # Paths to scan (empty = use plugin doc_paths)
   quadrant_directories:            # Optional: organize docs by quadrant directory
@@ -454,6 +454,8 @@ diataxis:
     reference: docs/reference/
     explanation: docs/explanation/
 ```
+
+**Defaults (no config required):** Diátaxis is enabled at `strict` strictness for all projects using the documentation-review plugin. Projects can override by setting `diataxis.enabled: false` or adjusting `strictness` in their `.claude/documentation-review.local.md`.
 
 When `diataxis.doc_paths` is empty, the skill falls back to the plugin's top-level `doc_paths` configuration. When that is also absent, require the user to specify paths.
 

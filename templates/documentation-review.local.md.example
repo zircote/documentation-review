@@ -30,16 +30,41 @@ api_docs:
   openapi_path: null             # Auto-detect: openapi.yaml, swagger.json, etc.
   asyncapi_path: null            # Auto-detect if present
   generate_from_code: false      # Opt-in feature
+  # Language doc toolchains (uncomment the one matching your project)
+  # rustdoc:
+  #   enabled: true
+  #   build_command: "cargo doc --no-deps --all-features"
+  #   crates: []                 # List specific crates, or empty for all
+  #   warn_missing_docs: true
+  # godoc:
+  #   enabled: true
+  #   packages:
+  #     - ./...
+  # sphinx:
+  #   enabled: true
+  #   build_command: "sphinx-build -b html docs/ docs/_build/"
+  #   docstring_style: google    # google | numpy | rst
+  # typedoc:
+  #   enabled: true
+  #   build_command: "npx typedoc"
+  #   entry_points:
+  #     - src/index.ts
+  # javadoc:
+  #   enabled: true
+  #   build_command: "./gradlew javadoc"
+  # dokka:
+  #   enabled: true
+  #   build_command: "./gradlew dokkaHtml"
 
 # Static site generator integration
 site_generator:
-  type: auto                     # auto, mkdocs, sphinx, docusaurus
+  type: auto                     # auto, mkdocs, sphinx, docusaurus, astro
   config_path: null              # Auto-detect
 
-# Diátaxis framework settings
+# Diátaxis framework settings (enabled at standard strictness by default)
 diataxis:
-  enabled: false                   # Enable Diátaxis framework enforcement
-  strictness: standard             # advisory (suggestions), standard (flag issues), strict (errors)
+  enabled: true                    # Default: true — set false to opt out
+  strictness: strict               # Default: strict — advisory | standard | strict
   require_frontmatter: true        # Require diataxis_type in doc frontmatter
   doc_paths: []                    # Paths to scan (empty = use top-level doc_paths)
   quadrant_directories:            # Optional: organize docs by quadrant directory

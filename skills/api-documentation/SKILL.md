@@ -318,10 +318,35 @@ components:
 - Generate client SDKs
 - Tools: Swagger Codegen, OpenAPI Generator
 
+### From Language Doc Toolchains
+
+When a project uses a language-native doc toolchain, API documentation may come from source code comments rather than OpenAPI specs. Detect and support:
+
+| Language | Toolchain | Build Command | Config Key |
+|----------|-----------|---------------|------------|
+| Rust | rustdoc | `cargo doc --no-deps --all-features` | `api_docs.rustdoc` |
+| Go | godoc / pkgsite | `go doc ./...` | `api_docs.godoc` |
+| Python | Sphinx autodoc / pdoc | `sphinx-build` / `pdoc` | `api_docs.sphinx` |
+| TypeScript | TypeDoc | `npx typedoc` | `api_docs.typedoc` |
+| Java | Javadoc | `javadoc` / `./gradlew javadoc` | `api_docs.javadoc` |
+| Kotlin | Dokka (KDoc) | `./gradlew dokkaHtml` | `api_docs.dokka` |
+| Swift | DocC | `swift package generate-documentation` | `api_docs.docc` |
+| C# | DocFX / XML docs | `docfx build` | `api_docs.docfx` |
+| Elixir | ExDoc | `mix docs` | `api_docs.exdoc` |
+
+**When reviewing a project with both OpenAPI and a language doc toolchain:**
+- OpenAPI/AsyncAPI = external API contract (HTTP/event surface)
+- Language doc toolchain = internal/library API surface (code-level)
+- Both should be reviewed — they document different audiences
+- Cross-check: HTTP endpoint docs should align with handler function doc comments
+
+See the `documentation-standards` skill for detailed per-language doc comment conventions and review criteria.
+
 ### Documentation Portals
 - **Swagger UI** - Interactive API explorer
 - **ReDoc** - Clean reference documentation
 - **Stoplight** - Collaborative API design
+- **Astro Starlight** - Modern documentation sites with component islands
 
 ## Additional Resources
 

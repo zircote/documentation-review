@@ -122,7 +122,7 @@ Check for:
 | README.md | ./docs/old-guide.md | Internal |
 | docs/api.md | #deprecated-section | Anchor |
 
-## Diátaxis Gap Analysis (when `diataxis.enabled` in config)
+## Diátaxis Gap Analysis (enabled by default; disable with `diataxis.enabled: false`)
 
 | Feature/Component | Tutorial | How-to | Reference | Explanation |
 |-------------------|----------|--------|-----------|-------------|

@@ -73,7 +73,7 @@ Otherwise, use default paths: `docs/`, `README.md`, `*.md`
    - Validate table structure
    - Assess whitespace usage
 
-   **Diátaxis Alignment** (when `diataxis.enabled` in config)
+   **Diátaxis Alignment** (enabled by default; disable with `diataxis.enabled: false`)
    - Classify each document into its Diátaxis quadrant (tutorial, how-to, reference, explanation)
    - Check for `diataxis_type` frontmatter — flag if missing (when `require_frontmatter: true`)
    - Score mode purity — flag sections where content drifts into another quadrant

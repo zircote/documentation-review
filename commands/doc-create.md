@@ -36,7 +36,7 @@ $IF($1,
   - template: Create documentation from standard templates
 )
 
-## Diátaxis Quadrant Selection (when `diataxis.enabled` in config)
+## Diátaxis Quadrant Selection (enabled by default; disable with `diataxis.enabled: false`)
 
 Before generating content, determine the Diátaxis quadrant:
 

@@ -95,7 +95,7 @@ Use Grep and Read to:
 - Mark deprecated features
 - Add migration notes
 
-### 4. Diátaxis Drift Check (when `diataxis.enabled` in config)
+### 4. Diátaxis Drift Check (enabled by default; disable with `diataxis.enabled: false`)
 
 Before applying changes, check for quadrant drift:
 - Read the document's `diataxis_type` from frontmatter (or classify if missing)

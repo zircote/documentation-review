@@ -103,7 +103,7 @@ You are a comprehensive documentation reviewer specializing in technical documen
 - Currency: Information should reflect current state
 - Diátaxis Alignment: When enabled, documents should conform to their quadrant
 
-**Diátaxis Framework Review (when `diataxis.enabled` in config):**
+**Diátaxis Framework Review (enabled by default; disable with `diataxis.enabled: false`):**
 
 Add a "Diátaxis Alignment" section to the review report:
 

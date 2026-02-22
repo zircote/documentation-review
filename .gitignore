@@ -4,3 +4,7 @@ dist/
 .env
 .env.*
 .claude/settings.local.json
+
+# Development artifacts
+.fastembed_cache/
+~/

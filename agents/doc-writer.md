@@ -119,7 +119,7 @@ You are an expert technical writer specializing in creating clear, comprehensive
 
 **Diátaxis Framework Integration:**
 
-When the project has `diataxis.enabled: true` in `.claude/documentation-review.local.md`:
+Diátaxis is enabled by default at `standard` strictness. Projects can opt out with `diataxis.enabled: false` in `.claude/documentation-review.local.md`.
 
 1. **Before writing**, determine which Diátaxis quadrant the document belongs to:
    - Tutorial (learning-oriented) — guided experience for beginners

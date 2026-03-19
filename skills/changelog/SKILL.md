@@ -1,52 +1,44 @@
 ---
 name: changelog
-description: This skill should be used when the user asks to "update changelog", "add changelog entry", "prepare release notes", "document version changes", "generate changelog", "review release history", "create release entry", or needs guidance on Keep a Changelog format, semantic-release configuration, conventional commits mapping, or version documentation best practices.
-version: 0.1.0
+description: >-
+  Generate, update, review, and maintain changelogs using Keep a Changelog format,
+  semantic-release, and conventional commits. Use this skill whenever the user wants to
+  add a changelog entry, prepare release notes, document version changes, generate a
+  changelog from git history, configure semantic-release, understand conventional commit
+  mappings, review changelog format, create migration guides for breaking changes, or
+  troubleshoot semantic-release issues. Also applies when discussing version bumps,
+  release automation, CHANGELOG.md formatting, or any task involving documenting what
+  changed between software versions. If the user mentions "changelog", "release notes",
+  "version history", "what changed", "semantic-release", or "conventional commits",
+  this skill likely applies. Also covers "what's new", "upgrade guide", and
+  "release history" queries.
 ---
 
-# Changelog Management Skill
+# Changelog Management
 
-<!-- BEGIN MNEMONIC PROTOCOL -->
-## Memory Operations
+Changelogs are the primary way users understand what changed between versions. A good changelog builds trust, reduces support tickets, and makes upgrade decisions easier. This skill covers the full lifecycle: format, generation, automation, and maintenance.
 
-You have PERSISTENT MEMORY across sessions.
+## Critical: Comparison Links
 
-BEFORE starting any task:
-```bash
-if [ -d ~/.claude/mnemonic ]; then
-    rg -i "{changelog_versioning}" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -5
-fi
+Every version entry in a Keep a Changelog file requires a comparison link at the bottom of the file. This is the most commonly forgotten element and breaks the linkability that makes changelogs useful. Always include them:
+
+```markdown
+[Unreleased]: https://github.com/org/repo/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/org/repo/compare/v1.1.0...v1.2.0
+[1.1.0]: https://github.com/org/repo/releases/tag/v1.1.0
 ```
-If results exist, READ the most relevant and apply that context.
 
-AFTER completing work, if you discovered:
-- A decision → capture to _semantic/decisions
-- A pattern → capture to _procedural/patterns
-- A learning → capture to _semantic/knowledge
-- A blocker → capture to _episodic/blockers
-<!-- END MNEMONIC PROTOCOL -->
-
----
-
-This skill helps you generate and maintain changelogs using semantic-release and conventional commits.
-
-## When to Use This Skill
-
-- Generating changelogs for releases
-- Documenting version changes
-- Reviewing release history
-- Preparing release notes
-- Understanding what changed between versions
-- Communicating changes to users
+When adding a new version entry, update both the new version's link AND the `[Unreleased]` link to point to the new tag.
 
 ## Changelog Overview
 
-The project uses **semantic-release** to automatically generate changelogs based on conventional commits:
-- **Automatic Generation**: Changelog generated from git commits
-- **Version Bumping**: Automatic versioning based on commit types
-- **Release Notes**: GitHub releases with changelog
-- **Breaking Changes**: Highlighted prominently
-- **Categorized Changes**: Features, fixes, chores grouped
+The recommended approach combines **Keep a Changelog** format with **semantic-release** for automation. This pairing works because Keep a Changelog is human-readable and widely recognized, while semantic-release eliminates manual version management:
+
+- **Automatic Generation**: Changelog generated from git commits via conventional commit messages
+- **Version Bumping**: Automatic semver versioning based on commit types (feat → minor, fix → patch)
+- **Release Notes**: GitHub releases populated automatically
+- **Breaking Changes**: Highlighted prominently with migration guidance
+- **Categorized Changes**: Features, fixes, and other changes grouped logically
 
 ## Changelog Format
 
@@ -125,6 +117,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### .releaserc.json
 
+The release rules below separate user-visible changes (feat, fix, perf, revert → trigger releases) from internal changes (docs, style, chore, refactor, test, build, ci → no release). This prevents version noise from changes that don't affect consumers.
+
 ```json
 {
   "branches": ["main"],
@@ -202,19 +196,7 @@ jobs:
 
 ### Adding Unreleased Changes
 
-```bash
-# Edit CHANGELOG.md
-vim CHANGELOG.md
-
-# Add changes under [Unreleased] section
-## [Unreleased]
-
-### Added
-- Add new feature X
-
-### Fixed
-- Fix bug Y
-```
+Add entries under the `[Unreleased]` section as work is merged. This keeps the changelog current without waiting for release time.
 
 ### Creating a New Release Entry
 
@@ -310,140 +292,34 @@ vim CHANGELOG.md
 
 ## Changelog Best Practices
 
+The goal is entries that help users decide whether to upgrade and what to watch out for. Vague entries ("fixed bugs") are worse than no entries — they signal carelessness.
+
 ### 1. Clear Descriptions
-
-```markdown
-# ❌ Vague
-### Added
-- Added stuff
-- Fixed things
-
-# ✅ Clear
-### Added
-- Add blog post generation with Gemini AI
-- Add rate limiting to API endpoints (100 req/min per IP)
-
-### Fixed
-- Fix database connection timeout during large data imports
-- Fix chart rendering issue on iOS Safari
-```
+Write for users, not developers. Include what changed and why it matters:
+- Good: "Add rate limiting to API endpoints (100 req/min per IP)"
+- Bad: "Added stuff"
 
 ### 2. Group Related Changes
-
-```markdown
-# ❌ Ungrouped
-### Added
-- Add feature A
-- Fix bug X
-- Add feature B
-- Fix bug Y
-
-# ✅ Grouped
-### Added
-- Add feature A with support for X
-- Add feature B with support for Y
-
-### Fixed
-- Fix bug X that affected feature A
-- Fix bug Y that affected feature B
-```
+Keep all features under Added, all fixes under Fixed. Don't interleave types.
 
 ### 3. Include Context
-
-```markdown
-# ❌ No context
-### Fixed
-- Fix bug
-
-# ✅ With context
-### Fixed
-- Fix database connection timeout when processing > 10,000 records
-  - Issue affected nightly data import job
-  - Now uses connection pooling and batch processing
-  - Performance improved by 50%
-```
+For significant changes, add sub-bullets with impact, root cause, or performance data. Users making upgrade decisions need this context.
 
 ### 4. Link to Issues/PRs
+Reference the PR or issue number for traceability: `([#123](url))`
 
-```markdown
-### Added
-- Add user authentication ([#123](https://github.com/username/repo/pull/123))
-- Add admin panel ([#124](https://github.com/username/repo/pull/124))
+## Viewing and Validating
 
-### Fixed
-- Fix memory leak ([#125](https://github.com/username/repo/issues/125))
-```
-
-## Viewing Changelog
-
-### GitHub Releases
-
-1. Navigate to repository
-2. Click "Releases" tab
-3. View auto-generated release notes
-
-### Local Viewing
-
+### Quick Commands
 ```bash
-# View CHANGELOG.md
-cat CHANGELOG.md
-
-# View specific version
-grep -A 20 "## \[1.2.0\]" CHANGELOG.md
-
-# View unreleased changes
-grep -A 50 "## \[Unreleased\]" CHANGELOG.md
-```
-
-## Generating Changelog Manually
-
-### Using semantic-release
-
-```bash
-# Dry run (preview without releasing)
+# Preview without releasing
 npx semantic-release --dry-run
 
-# Generate changelog
-npx semantic-release
-```
-
-### Using git-changelog
-
-```bash
-# Install git-changelog
-npm install -g generate-changelog
-
-# Generate changelog
-changelog
-
-# Generate for specific version
-changelog -p 1.2.0
-
-# Generate from git history
-git log --oneline --decorate
-```
-
-## Changelog Validation
-
-### Check Format
-
-```bash
-# Install markdownlint
-pnpm add -D markdownlint-cli
-
-# Lint CHANGELOG.md
+# Lint CHANGELOG.md format
 pnpm markdownlint CHANGELOG.md
-
-# Fix formatting issues
-pnpm markdownlint --fix CHANGELOG.md
 ```
 
-### Check Links
-
-```bash
-# Check for broken links in changelog
-grep -o 'http[s]*://[^)]*' CHANGELOG.md | xargs -I {} curl -s -o /dev/null -w "%{http_code} {}\n" {}
-```
+For detailed generation commands, validation scripts, and local viewing tips, see `references/semantic-release-config.md`.
 
 ## Migration Guide Template
 
@@ -498,37 +374,10 @@ When creating breaking changes, include a migration guide:
 ## Troubleshooting
 
 ### Semantic Release Not Generating Changelog
-
-```bash
-# Issue: No changelog generated
-# Possible causes:
-# 1. No conventional commits since last release
-# 2. Wrong branch
-# 3. Missing GITHUB_TOKEN
-
-# Check commits
-git log --oneline
-
-# Check branch
-git branch
-
-# Verify GITHUB_TOKEN
-echo $GITHUB_TOKEN
-```
+Common causes: no conventional commits since last release, wrong branch, or missing GITHUB_TOKEN. Check `git log --oneline` to verify commit format and `git branch` to verify you're on the release branch.
 
 ### Duplicate Entries
-
-```bash
-# Issue: Duplicate changelog entries
-# Solution: Clean up CHANGELOG.md manually
-
-# Remove duplicates
-vim CHANGELOG.md
-
-# Commit fix
-git add CHANGELOG.md
-git commit -m "docs: remove duplicate changelog entries"
-```
+Clean up manually, then commit: `git commit -m "docs: remove duplicate changelog entries"`
 
 ## Additional Resources
 
@@ -554,13 +403,6 @@ Working examples in `examples/`:
   - `.releaserc.json` - Semantic release config
   - Root CLAUDE.md - Release process
 
-## Best Practices Summary
+## Summary
 
-1. **Automatic Generation**: Use semantic-release for automated changelog
-2. **Clear Descriptions**: Write clear, descriptive changelog entries
-3. **Group Changes**: Group related changes together
-4. **Breaking Changes**: Highlight breaking changes prominently
-5. **Migration Guides**: Include migration steps for breaking changes
-6. **Link References**: Link to issues and pull requests
-7. **Regular Updates**: Keep changelog updated with each release
-8. **User-Focused**: Write for end users, not developers
+Automate generation with semantic-release, write clear user-focused entries, group by change type, highlight breaking changes prominently with migration guides, and link to issues/PRs for traceability.

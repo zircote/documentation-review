@@ -1,34 +1,36 @@
 ---
 name: api-documentation
-description: This skill should be used when the user asks to "document an API", "create API docs", "generate OpenAPI spec", "review API documentation", "document REST endpoints", "create Swagger docs", "document AsyncAPI", "improve endpoint documentation", or needs guidance on API specification formats, endpoint documentation patterns, or API reference writing.
-version: 0.1.0
+description: >-
+  Patterns and templates for creating comprehensive API documentation using OpenAPI/Swagger,
+  AsyncAPI, and manual documentation approaches. Use this skill whenever the user wants to
+  document REST endpoints, generate or improve an OpenAPI spec, create Swagger docs, document
+  WebSocket/event-driven APIs with AsyncAPI, review API documentation completeness, add
+  request/response examples, document authentication schemes, set up API documentation
+  portals (Swagger UI, ReDoc, Stoplight), or convert between API doc formats. Also applies
+  when discussing endpoint parameters, response codes, schema definitions, pagination patterns,
+  error response formats, or code-first vs design-first API documentation. If the user
+  mentions "API docs", "OpenAPI", "Swagger", "AsyncAPI", "endpoint documentation",
+  "API reference", or "API spec", this skill likely applies.
 ---
 
 # API Documentation
 
-<!-- BEGIN MNEMONIC PROTOCOL -->
-## Memory Operations
+API documentation is the contract between your service and its consumers. Incomplete or inaccurate API docs cause integration failures, support tickets, and abandoned adoption. This skill covers REST (OpenAPI), event-driven (AsyncAPI), and language-native API documentation patterns.
 
-You have PERSISTENT MEMORY across sessions.
+## Review Workflow
 
-BEFORE starting any task:
-```bash
-if [ -d ~/.claude/mnemonic ]; then
-    rg -i "{api_documentation}" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -5
-fi
-```
-If results exist, READ the most relevant and apply that context.
+When reviewing existing API documentation, follow this sequence:
 
-AFTER completing work, if you discovered:
-- A decision → capture to _semantic/decisions
-- A pattern → capture to _procedural/patterns
-- A learning → capture to _semantic/knowledge
-- A blocker → capture to _episodic/blockers
-<!-- END MNEMONIC PROTOCOL -->
+1. **Inventory endpoints** — scan route handlers/controllers and cross-reference against the spec's `paths`. Missing endpoints are the most common defect.
+2. **Check required elements** — for each endpoint, verify all 7 elements below (summary, description, parameters, request body, responses, examples, auth).
+3. **Validate examples** — request/response examples should be valid JSON matching the declared schemas. Invalid examples break SDK generators and mislead consumers.
+4. **Audit error responses** — every endpoint should document at least 400, 404 (for resource endpoints), and 500 responses. Missing error docs force consumers to discover failures at runtime.
+5. **Verify authentication** — security schemes should be defined in `components/securitySchemes` and applied globally or per-endpoint.
+6. **Check the quality checklist** at the end of this document for a final pass.
 
----
+## Quick Reference
 
-Guidance for creating comprehensive API documentation using OpenAPI/Swagger, AsyncAPI, and manual documentation patterns.
+For copy-paste endpoint templates, see **`references/endpoint-templates.md`**. For advanced OpenAPI patterns (discriminators, webhooks, callbacks), see **`references/openapi-patterns.md`**. For complete working specs, see `examples/petstore-openapi.yaml` and `examples/events-asyncapi.yaml`.
 
 ## OpenAPI/Swagger Overview
 
@@ -41,7 +43,7 @@ OpenAPI Specification (OAS) is the standard for describing REST APIs. Use it for
 ### Supported Versions
 - **OpenAPI 3.1** - Current standard, JSON Schema compatible
 - **OpenAPI 3.0** - Widely supported, stable
-- **Swagger 2.0** - Legacy, still common
+- **Swagger 2.0** - Legacy, migrate when feasible since tooling is converging on 3.x
 
 ### Basic Structure
 
@@ -147,74 +149,17 @@ responses:
 
 ### Component Schemas
 
-Define reusable schemas in components:
-
-```yaml
-components:
-  schemas:
-    User:
-      type: object
-      required:
-        - id
-        - email
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier
-        email:
-          type: string
-          format: email
-          description: User email address
-        name:
-          type: string
-          description: Display name
-        createdAt:
-          type: string
-          format: date-time
-```
+Define reusable schemas in `components/schemas` to avoid duplication. Every resource should have separate Create, Update, and Response models — consumers need different fields for each operation. See `references/endpoint-templates.md` for complete schema examples.
 
 ### Common Patterns
 
-**Pagination:**
-```yaml
-PaginatedResponse:
-  type: object
-  properties:
-    data:
-      type: array
-      items:
-        $ref: '#/components/schemas/Item'
-    pagination:
-      type: object
-      properties:
-        total:
-          type: integer
-        page:
-          type: integer
-        limit:
-          type: integer
-```
+Every API needs these three reusable patterns. Without them, consumers reinvent pagination, error handling, and auth on every integration.
 
-**Error Response:**
-```yaml
-Error:
-  type: object
-  required:
-    - code
-    - message
-  properties:
-    code:
-      type: string
-      description: Error code
-    message:
-      type: string
-      description: Human-readable message
-    details:
-      type: array
-      items:
-        type: object
-```
+- **PaginatedResponse** — standardized wrapper with `data` array + `pagination` object (total, page, limit). Define once, reuse via `$ref` on all list endpoints.
+- **Error** — standardized error body with `code` (machine-readable), `message` (human-readable), and optional `details` array. Apply to all 4xx/5xx responses.
+- **Rate Limit Headers** — document `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset` headers and the `429 Too Many Requests` response. Consumers cannot implement retry/backoff without this.
+
+See `references/endpoint-templates.md` for the full YAML definitions of each pattern.
 
 ## Authentication Documentation
 
@@ -286,26 +231,29 @@ components:
 
 ## Documentation Quality Checklist
 
-### Completeness
-- [ ] All endpoints documented
-- [ ] All parameters described
-- [ ] All response codes listed
-- [ ] Authentication explained
-- [ ] Rate limits documented
+### Completeness (missing items cause integration failures)
+- [ ] All endpoints documented — cross-reference route handlers against spec paths
+- [ ] All parameters described — undocumented params force consumers to read source code
+- [ ] All response codes listed — missing error codes (4xx, 5xx) hide failure modes
+- [ ] Authentication explained — consumers cannot make authenticated calls without this
+- [ ] Rate limits documented — consumers cannot implement retry logic without knowing limits
+- [ ] Pagination pattern documented — consumers need to know how to traverse large result sets
 
-### Accuracy
-- [ ] Schemas match actual responses
-- [ ] Examples are valid JSON
-- [ ] Status codes are correct
-- [ ] Parameter types are accurate
+### Accuracy (inaccurate docs are worse than missing docs)
+- [ ] Schemas match actual responses — validate against live API output
+- [ ] Examples are valid JSON — invalid examples break SDK generators
+- [ ] Status codes are correct — wrong codes cause incorrect error handling in clients
+- [ ] Parameter types are accurate — type mismatches cause silent failures
 
-### Usability
-- [ ] Clear summaries for endpoints
-- [ ] Realistic examples provided
-- [ ] Error responses helpful
-- [ ] Common use cases covered
+### Usability (determines adoption speed)
+- [ ] Clear summaries for endpoints — one-line descriptions visible in Swagger UI navigation
+- [ ] Realistic examples provided — copy-paste-ready, not placeholder values
+- [ ] Error responses include problem detail — help consumers diagnose and fix issues
+- [ ] Common use cases covered — top 3-5 workflows should be immediately discoverable
 
 ## Generating Documentation
+
+Choose code-first or design-first based on your team's workflow. Code-first works well when the implementation drives the API shape; design-first works when the contract needs agreement before coding starts.
 
 ### From Code (Code-First)
 - Extract from decorators/annotations
@@ -313,9 +261,8 @@ components:
 - Tools: swagger-jsdoc, FastAPI, NestJS Swagger
 
 ### From Spec (Design-First)
-- Write OpenAPI spec first
-- Generate server stubs
-- Generate client SDKs
+- Write OpenAPI spec first, then generate code
+- Generate server stubs and client SDKs
 - Tools: Swagger Codegen, OpenAPI Generator
 
 ### From Language Doc Toolchains

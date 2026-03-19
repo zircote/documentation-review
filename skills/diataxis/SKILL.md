@@ -1,34 +1,24 @@
 ---
 name: diataxis
-description: This skill should be used when the user asks to "apply diataxis", "classify documentation", "review docs with diataxis", "create diataxis documentation", "documentation gap analysis", "check documentation quadrants", "organize docs by type", or needs guidance on structuring documentation according to the Diataxis framework (tutorials, how-to guides, reference, explanation).
-version: 0.1.0
+description: >-
+  Classify, create, review, and maintain documentation using the Diátaxis framework — the
+  four-quadrant system (tutorials, how-to guides, reference, explanation) that separates
+  documentation by user need. Use this skill whenever the user wants to classify documentation
+  into quadrants, perform a documentation gap analysis, check for mode mixing, create
+  documentation following a specific quadrant template, organize docs by type, review
+  documentation for Diátaxis alignment, add diataxis_type frontmatter, split mixed-mode
+  documents, or structure new docs as tutorials vs how-to guides vs reference vs explanation.
+  Also applies when discussing documentation taxonomy, learning-oriented vs task-oriented
+  content, quadrant coverage matrices, cross-reference audits between doc types, or when
+  the user is unsure whether something should be a tutorial or a how-to guide. If the user
+  mentions "Diataxis", "documentation types", "tutorials vs guides", "quadrants",
+  "mode purity", "gap analysis", "documentation classification", "documentation structure",
+  or "documentation organization", this skill likely applies.
 ---
 
 # Diátaxis Documentation Framework
 
-<!-- BEGIN MNEMONIC PROTOCOL -->
-## Memory Operations
-
-You have PERSISTENT MEMORY across sessions.
-
-BEFORE starting any task:
-```bash
-if [ -d ~/.claude/mnemonic ]; then
-    rg -i "{diataxis}" ~/.claude/mnemonic/ --glob "*.memory.md" -l | head -5
-fi
-```
-If results exist, READ the most relevant and apply that context.
-
-AFTER completing work, if you discovered:
-- A decision → capture to _semantic/decisions
-- A pattern → capture to _procedural/patterns
-- A learning → capture to _semantic/knowledge
-- A blocker → capture to _episodic/blockers
-<!-- END MNEMONIC PROTOCOL -->
-
----
-
-Comprehensive guidance for classifying, creating, reviewing, and maintaining documentation according to the Diátaxis framework. Diátaxis identifies four distinct documentation modes, each serving a different user need. Documentation quality depends on keeping these modes separate and well-executed.
+Most documentation problems stem from mixing different types of content in ways that serve nobody well. A tutorial that drifts into reference material loses beginners; a reference page with step-by-step instructions frustrates experts looking up specifics. Diátaxis solves this by identifying four distinct documentation modes, each serving a different user need at a different moment. Keeping these modes separate and well-executed is the foundation of documentation that actually works.
 
 ## The Diátaxis Compass
 
@@ -58,7 +48,7 @@ The answers place content in exactly one quadrant.
 - Learning happens through doing, not through explanation
 - The learner follows a carefully designed path to a meaningful result
 
-**What a tutorial MUST do:**
+**Effective tutorials:** (A learner in acquisition mode needs confidence and momentum — these principles protect that.)
 - Show the destination upfront — what the learner will accomplish
 - Deliver visible results at every step — each action produces comprehensible output
 - Maintain narrative expectations — "You will notice that...", "The output should look like..."
@@ -67,12 +57,12 @@ The answers place content in exactly one quadrant.
 - Encourage repetition — design steps that reward being repeated
 - Aspire to perfect reliability — learners must get the promised results every time
 
-**What a tutorial MUST NOT do:**
-- Explain concepts in depth — link to explanation docs instead
-- Present options or alternatives — keep the path singular and focused
-- Assume prior knowledge — start from the beginning
-- Digress into reference material — stay on the learning path
-- Teach — enable learning through guided experience instead
+**Anti-patterns to avoid:** (These break the learner's momentum and confidence.)
+- Explaining concepts in depth — link to explanation docs instead
+- Presenting options or alternatives — keep the path singular and focused
+- Assuming prior knowledge — start from the beginning
+- Digressing into reference material — stay on the learning path
+- Teaching — enable learning through guided experience instead
 
 **Language and tone:**
 - Use inclusive first-person plural: "In this tutorial, we will..."
@@ -130,18 +120,18 @@ diataxis_learning_goals:
 - Assumes baseline competence — the reader can follow directions
 - Contains only action and instruction — no digression
 
-**What a how-to guide MUST do:**
+**Effective how-to guides:** (The reader already knows the basics — they need a path to their goal, not a lesson.)
 - State the problem or goal clearly in the title
 - Sequence steps logically — follow the user's cognitive workflow
 - Address real-world complexity — problems fork, overlap, require judgment
 - Write from the user's perspective, not the machinery's perspective
 - Remain focused — start and end at reasonable, meaningful places
 
-**What a how-to guide MUST NOT do:**
-- Teach or explain — the user already has baseline competence
-- Include exhaustive reference — link to reference docs instead
-- Document every option — focus on what solves the problem
-- Duplicate tutorial content — these serve different users at different stages
+**Anti-patterns to avoid:** (These slow down a competent user who just wants to get something done.)
+- Teaching or explaining — the user already has baseline competence
+- Including exhaustive reference — link to reference docs instead
+- Documenting every option — focus on what solves the problem
+- Duplicating tutorial content — these serve different users at different stages
 
 **Language and tone:**
 - Use conditional imperatives: "If you want x, do y"
@@ -203,19 +193,19 @@ diataxis_goal: [what the user accomplishes]
 - Consulted during work, not read end-to-end
 - Must mirror the structure of the product it describes
 
-**What reference documentation MUST do:**
+**Effective reference documentation:** (A practitioner mid-task needs facts fast — structure and predictability are everything.)
 - Describe what exists — functions, classes, APIs, CLI options, config keys
-- Adopt standard, consistent patterns — users must find info where they expect it
+- Adopt standard, consistent patterns — users find info where they expect it
 - Respect the product's own structure — align docs with code architecture
 - Provide examples — concise illustrations of usage, not tutorials
 - Be accurate and complete — "truth and certainty"
 - Use prescriptive language where needed: "You must use a. Never use d."
 
-**What reference documentation MUST NOT do:**
-- Instruct — link to how-to guides instead
-- Explain concepts — link to explanation docs instead
-- Include opinions, marketing claims, or interpretation
-- Rely solely on auto-generated docs — supplement with authored content
+**Anti-patterns to avoid:** (These force the reader to filter noise while looking up a parameter or return type.)
+- Instructing — link to how-to guides instead
+- Explaining concepts — link to explanation docs instead
+- Including opinions, marketing claims, or interpretation
+- Relying solely on auto-generated docs — supplement with authored content
 
 **Language and tone:**
 - State facts directly
@@ -275,18 +265,18 @@ diataxis_describes: [component, API, or system being documented]
 - Addresses "why" questions and conceptual understanding
 - Characterized by distance from immediate practical concerns
 
-**What explanation documentation MUST do:**
+**Effective explanation documentation:** (The reader wants to understand the "why" — give them connections and context, not procedures.)
 - Make connections — link topics together, even outside the immediate subject
 - Provide context — include background, design decisions, historical reasons, constraints
 - Structure around topics — cover the bigger picture, history, choices, alternatives
 - Embrace perspective — consider alternatives, counter-examples, multiple approaches
 - Stay tightly bounded — resist absorbing other modes into the discussion
 
-**What explanation documentation MUST NOT do:**
-- Include step-by-step instructions — that's a tutorial or how-to
-- Provide machinery descriptions — that's reference
-- Substitute for practical guides — understanding is not action
-- Drift without boundaries — define scope clearly
+**Anti-patterns to avoid:** (These pull the reader out of reflective mode into action mode, defeating the purpose.)
+- Including step-by-step instructions — that's a tutorial or how-to
+- Providing machinery descriptions — that's reference
+- Substituting for practical guides — understanding is not action
+- Drifting without boundaries — define scope clearly
 
 **Language and tone:**
 - Use causal reasoning: "The reason for x is because historically, y..."

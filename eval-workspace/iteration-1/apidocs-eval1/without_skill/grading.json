@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies need for endpoint descriptions and summaries",
+      "passed": true,
+      "evidence": "Section 3 covers endpoint summaries and descriptions with concrete FastAPI examples."
+    },
+    {
+      "text": "Recommends adding request/response examples",
+      "passed": true,
+      "evidence": "Section 4 covers request/response schemas with Pydantic Field() examples."
+    },
+    {
+      "text": "Recommends documenting error responses (400, 404, 500)",
+      "passed": true,
+      "evidence": "Section 5 explicitly covers missing 4xx/5xx error documentation with HTTPException examples."
+    },
+    {
+      "text": "Covers authentication/security scheme documentation",
+      "passed": true,
+      "evidence": "Section 7 covers security schemes with OAuth2PasswordBearer example."
+    },
+    {
+      "text": "References OpenAPI 3.x patterns or FastAPI-specific decorators",
+      "passed": true,
+      "evidence": "Uses FastAPI-specific decorators throughout. Mentions OpenAPI generation. Covers operation_id, tags, servers."
+    },
+    {
+      "text": "Provides actionable code examples showing how to improve",
+      "passed": true,
+      "evidence": "Every section includes concrete Python code examples with FastAPI decorators."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

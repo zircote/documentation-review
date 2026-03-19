@@ -1,0 +1,31 @@
+{
+  "eval_id": 2,
+  "eval_name": "changelog-v240-release-entry",
+  "prompt": "We just shipped v2.4.0 with three new features and two bug fixes. Add the new release entry.",
+  "assertions": [
+    {
+      "text": "Uses Keep a Changelog format with ## [2.4.0] heading and date",
+      "type": "format_compliance"
+    },
+    {
+      "text": "Groups features under ### Added section",
+      "type": "format_compliance"
+    },
+    {
+      "text": "Groups bug fixes under ### Fixed section",
+      "type": "format_compliance"
+    },
+    {
+      "text": "All 5 changes are present (OAuth2, CSV export, dark mode, WebSocket leak, timezone fix)",
+      "type": "completeness"
+    },
+    {
+      "text": "Descriptions are clear and user-focused, not vague single words",
+      "type": "output_quality"
+    },
+    {
+      "text": "Includes comparison link reference at bottom (e.g., [2.4.0]: .../compare/v2.3.0...v2.4.0)",
+      "type": "format_compliance"
+    }
+  ]
+}

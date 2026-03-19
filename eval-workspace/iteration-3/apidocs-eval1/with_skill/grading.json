@@ -1,0 +1,55 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies need for endpoint descriptions and summaries",
+      "passed": true,
+      "evidence": "Step 2 Required Elements: Summary rated Medium gap, Description rated High gap."
+    },
+    {
+      "text": "Recommends adding request/response examples",
+      "passed": true,
+      "evidence": "Step 3 Example Validation: 'no examples exist at all'."
+    },
+    {
+      "text": "Recommends documenting error responses (400, 404, 500)",
+      "passed": true,
+      "evidence": "Step 4 Error Response Audit: documents all missing codes (400, 401, 403, 404, 409, 429, 500)."
+    },
+    {
+      "text": "Covers authentication/security scheme documentation",
+      "passed": true,
+      "evidence": "Step 5 Authentication Verification: 'no security schemes are defined'."
+    },
+    {
+      "text": "References OpenAPI 3.x patterns",
+      "passed": true,
+      "evidence": "Follows skill's review workflow, references skill's patterns throughout."
+    },
+    {
+      "text": "Follows a structured review workflow",
+      "passed": true,
+      "evidence": "9 matches for review workflow steps. Explicitly follows 6-step sequence from skill."
+    },
+    {
+      "text": "Applies a quality checklist with pass/fail or severity ratings",
+      "passed": true,
+      "evidence": "7 matches for quality checklist/scoring. Runs full completeness/accuracy/usability checklist, scores spec at 3/10."
+    },
+    {
+      "text": "Mentions the 7 required elements per endpoint",
+      "passed": true,
+      "evidence": "2 matches. Evaluates all 7 required elements (summary, description, parameters, request body, responses, examples, auth)."
+    },
+    {
+      "text": "Recommends documenting pagination patterns",
+      "passed": true,
+      "evidence": "10 matches for pagination. Covers standardized PaginatedResponse pattern."
+    },
+    {
+      "text": "Recommends documenting rate limits",
+      "passed": true,
+      "evidence": "9 matches for rate limit/429/X-RateLimit. Covers rate limit headers and 429 response."
+    }
+  ],
+  "summary": { "passed": 10, "failed": 0, "total": 10, "pass_rate": 1.0 }
+}

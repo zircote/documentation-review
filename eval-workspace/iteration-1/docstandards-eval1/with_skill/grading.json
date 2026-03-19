@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Review identifies missing standard README sections (description, installation, usage, examples, contributing, license)",
+      "passed": true,
+      "evidence": "Findings 1-8 cover description, features, installation, quick start, configuration, API/command reference, contributing, and license. All standard sections identified."
+    },
+    {
+      "text": "Recommends adding installation/setup instructions",
+      "passed": true,
+      "evidence": "Finding 3 (lines 47-74): Critical severity, includes go install command, binary releases, build-from-source steps, and minimum Go version."
+    },
+    {
+      "text": "Recommends adding usage examples with code blocks",
+      "passed": true,
+      "evidence": "Finding 4 (lines 78-97): Critical severity, includes bash code block with mycli --help and mycli run --input data.json examples."
+    },
+    {
+      "text": "Mentions need for description/overview section",
+      "passed": true,
+      "evidence": "Finding 1 (lines 19-33): High severity, includes recommended fix with markdown template."
+    },
+    {
+      "text": "Output is structured with clear sections or checklist format",
+      "passed": true,
+      "evidence": "Uses numbered findings with severity ratings, a formal checklist (lines 186-212) using pass/fail/N/A for each criterion, and a priority actions list at the end."
+    },
+    {
+      "text": "Mentions Go-specific considerations (godoc, go install, module path)",
+      "passed": true,
+      "evidence": "Finding 9 (lines 165-174): Explicitly references godoc comments, 'go doc ./...' command, and Go Reference badge. Finding 3 includes 'go install' with full module path."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

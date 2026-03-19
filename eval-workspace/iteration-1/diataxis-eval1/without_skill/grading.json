@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Classifies documents using the two Diataxis axes (action/cognition, acquisition/application)",
+      "passed": false,
+      "evidence": "Uses a summary table (Practical+Studying / Practical+Working / Theoretical+Working / Theoretical+Studying) but does NOT use the Diataxis compass terminology (action/cognition, acquisition/application). Classification is correct but uses informal axis labels."
+    },
+    {
+      "text": "Produces a coverage matrix table (feature/component x quadrant)",
+      "passed": false,
+      "evidence": "Produces a classification summary table (category x files) and a missing docs table, but NOT a feature/component x quadrant coverage matrix. No cross-referencing of features against quadrants."
+    },
+    {
+      "text": "Identifies specific gaps (missing tutorials, missing reference, etc.)",
+      "passed": true,
+      "evidence": "Section 'Gap Analysis' with 5 subsections identifying: underrepresented Explanation, shallow tutorials, missing CLI/error-code reference, impure how-to guides, missing cross-cutting docs. 8 specific missing documents listed."
+    },
+    {
+      "text": "Prioritizes gaps by user impact",
+      "passed": true,
+      "evidence": "Missing documents table includes Priority column (High/Medium). Gap analysis explains user impact for each category."
+    },
+    {
+      "text": "Recommends diataxis_type frontmatter additions",
+      "passed": false,
+      "evidence": "Action item 6 says 'Include a front-matter field (e.g., type: tutorial)' — generic advice. Does NOT use diataxis_type, diataxis_learning_goals, diataxis_goal, or diataxis_describes fields. No YAML examples."
+    },
+    {
+      "text": "Uses Diataxis terminology correctly (quadrants, modes, tutorials vs how-to distinction)",
+      "passed": false,
+      "evidence": "Uses 'Diataxis' and the four category names correctly, but does not use framework terminology like 'quadrants', 'modes', 'mode purity', 'compass', or 'acquisition/application'. Does not assess mode mixing with severity levels."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 4,
+    "total": 6,
+    "pass_rate": 0.33
+  }
+}

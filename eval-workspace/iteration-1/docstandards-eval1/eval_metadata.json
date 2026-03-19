@@ -1,0 +1,31 @@
+{
+  "eval_id": 1,
+  "eval_name": "readme-review-go-cli",
+  "prompt": "I just finished building a CLI tool in Go and the README is basically empty — just the project name. Can you review it and tell me what's missing?",
+  "assertions": [
+    {
+      "text": "Review identifies missing standard README sections (description, installation, usage, examples, contributing, license)",
+      "type": "content_coverage"
+    },
+    {
+      "text": "Recommends adding installation/setup instructions",
+      "type": "specific_recommendation"
+    },
+    {
+      "text": "Recommends adding usage examples with code blocks",
+      "type": "specific_recommendation"
+    },
+    {
+      "text": "Mentions need for description/overview section",
+      "type": "specific_recommendation"
+    },
+    {
+      "text": "Output is structured with clear sections or checklist format",
+      "type": "output_quality"
+    },
+    {
+      "text": "Mentions Go-specific considerations (godoc, go install, module path)",
+      "type": "domain_specificity"
+    }
+  ]
+}

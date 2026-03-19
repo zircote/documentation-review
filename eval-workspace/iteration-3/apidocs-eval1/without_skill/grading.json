@@ -1,0 +1,55 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies need for endpoint descriptions and summaries",
+      "passed": true,
+      "evidence": "Covers endpoint summaries and descriptions."
+    },
+    {
+      "text": "Recommends adding request/response examples",
+      "passed": true,
+      "evidence": "Covers schema examples with json_schema_extra."
+    },
+    {
+      "text": "Recommends documenting error responses (400, 404, 500)",
+      "passed": true,
+      "evidence": "Covers error responses."
+    },
+    {
+      "text": "Covers authentication/security scheme documentation",
+      "passed": true,
+      "evidence": "Section 6 covers security schemes."
+    },
+    {
+      "text": "References OpenAPI 3.x patterns",
+      "passed": true,
+      "evidence": "Uses FastAPI decorators and OpenAPI concepts throughout."
+    },
+    {
+      "text": "Follows a structured review workflow",
+      "passed": false,
+      "evidence": "0 matches. No structured review workflow — presents findings as a flat list of gaps, not a systematic audit sequence."
+    },
+    {
+      "text": "Applies a quality checklist with pass/fail or severity ratings",
+      "passed": false,
+      "evidence": "0 matches. Has a 'per-endpoint checklist' but no completeness/accuracy/usability quality framework with pass/fail scoring."
+    },
+    {
+      "text": "Mentions the 7 required elements per endpoint",
+      "passed": false,
+      "evidence": "0 matches. Covers most elements individually but does not frame them as a defined set of required elements."
+    },
+    {
+      "text": "Recommends documenting pagination patterns",
+      "passed": false,
+      "evidence": "1 match (passing mention). No standardized PaginatedResponse pattern or reusable schema recommendation."
+    },
+    {
+      "text": "Recommends documenting rate limits",
+      "passed": false,
+      "evidence": "1 match (passing mention). No rate limit headers, 429 response documentation, or X-RateLimit guidance."
+    }
+  ],
+  "summary": { "passed": 5, "failed": 5, "total": 10, "pass_rate": 0.5 }
+}

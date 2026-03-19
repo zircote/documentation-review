@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Uses Keep a Changelog format with ## [2.4.0] heading and date",
+      "passed": true,
+      "evidence": "Line 1: '## [2.4.0] - 2026-03-19'"
+    },
+    {
+      "text": "Groups features under ### Added section",
+      "passed": true,
+      "evidence": "Lines 3-7: ### Added with 3 entries."
+    },
+    {
+      "text": "Groups bug fixes under ### Fixed section",
+      "passed": true,
+      "evidence": "Lines 9-12: ### Fixed with 2 entries."
+    },
+    {
+      "text": "All 5 changes are present",
+      "passed": true,
+      "evidence": "All 5: OAuth2 (Authentication), CSV export (Reporting), Dark mode (UI), WebSocket memory leak, Scheduler timezone fix."
+    },
+    {
+      "text": "Descriptions are clear and user-focused",
+      "passed": true,
+      "evidence": "Bold category prefixes, user-impact descriptions: 'enabling offline analysis and data portability', 'caused jobs to fire at wrong times in non-UTC zones'."
+    },
+    {
+      "text": "Includes comparison link reference",
+      "passed": true,
+      "evidence": "Lines 20-23: '[Unreleased]: .../compare/v2.4.0...HEAD' and '[2.4.0]: .../compare/v2.3.0...v2.4.0'. Agent quotes skill's 'most commonly forgotten element' guidance."
+    }
+  ],
+  "summary": { "passed": 6, "failed": 0, "total": 6, "pass_rate": 1.0 }
+}

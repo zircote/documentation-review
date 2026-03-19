@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Classifies documents using the two Diataxis axes (action/cognition, acquisition/application)",
+      "passed": false,
+      "evidence": "Uses category names (Tutorial, How-To, Reference, Explanation) and confidence levels but does NOT use the compass terminology or the two diagnostic axes."
+    },
+    {
+      "text": "Produces a coverage matrix table (feature/component x quadrant)",
+      "passed": false,
+      "evidence": "0 matches for coverage matrix. Has a classification table and distribution chart but no feature x quadrant cross-reference."
+    },
+    {
+      "text": "Identifies specific gaps (missing tutorials, missing reference, etc.)",
+      "passed": true,
+      "evidence": "Gap analysis identifies underrepresented tutorials and explanation categories with specific recommended new documents."
+    },
+    {
+      "text": "Prioritizes gaps by user impact",
+      "passed": true,
+      "evidence": "Discusses user impact for each gap. Identifies tutorials and explanation as 'severely underrepresented'."
+    },
+    {
+      "text": "Recommends diataxis_type frontmatter additions",
+      "passed": false,
+      "evidence": "0 matches for diataxis_type. Mentions 'front-matter field' generically but does not use specific Diataxis field names."
+    },
+    {
+      "text": "Uses Diataxis terminology correctly (quadrants, modes, tutorials vs how-to distinction)",
+      "passed": false,
+      "evidence": "Uses category names correctly but not framework terminology (no compass, quadrant, mode purity, acquisition/application)."
+    }
+  ],
+  "summary": { "passed": 2, "failed": 4, "total": 6, "pass_rate": 0.33 }
+}

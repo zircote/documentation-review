@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Uses Keep a Changelog format with ## [2.4.0] heading and date",
+      "passed": true,
+      "evidence": "Line 1: '## [2.4.0] - 2026-03-19' — correct format."
+    },
+    {
+      "text": "Groups features under ### Added section",
+      "passed": true,
+      "evidence": "Lines 3-7: '### Added' section with 3 entries."
+    },
+    {
+      "text": "Groups bug fixes under ### Fixed section",
+      "passed": true,
+      "evidence": "Lines 9-12: '### Fixed' section with 2 entries."
+    },
+    {
+      "text": "All 5 changes are present (OAuth2, CSV export, dark mode, WebSocket leak, timezone fix)",
+      "passed": true,
+      "evidence": "All 5 changes present as single-line items."
+    },
+    {
+      "text": "Descriptions are clear and user-focused, not vague single words",
+      "passed": false,
+      "evidence": "Entries are bare minimum: 'OAuth2 support', 'CSV export for reports', 'Memory leak in WebSocket handler'. No user impact context, no bold labels, no explanation of why changes matter."
+    },
+    {
+      "text": "Includes comparison link reference at bottom (e.g., [2.4.0]: .../compare/v2.3.0...v2.4.0)",
+      "passed": false,
+      "evidence": "No comparison link present."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 2,
+    "total": 6,
+    "pass_rate": 0.67
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Classifies documents using the two Diataxis axes (action/cognition, acquisition/application)",
+      "passed": true,
+      "evidence": "Compass table reproduced at top. Every classification includes 'Compass reasoning: Action + Acquisition' etc."
+    },
+    {
+      "text": "Produces a coverage matrix table (feature/component x quadrant)",
+      "passed": true,
+      "evidence": "1 match for 'Coverage Matrix'. Full feature x quadrant table present."
+    },
+    {
+      "text": "Identifies specific gaps (missing tutorials, missing reference, etc.)",
+      "passed": true,
+      "evidence": "Gap analysis with specific missing documents and priority tiers."
+    },
+    {
+      "text": "Prioritizes gaps by user impact",
+      "passed": true,
+      "evidence": "Gaps organized by priority with user impact explanations."
+    },
+    {
+      "text": "Recommends diataxis_type frontmatter additions",
+      "passed": true,
+      "evidence": "10 matches for diataxis_type. Every document classification includes recommended YAML frontmatter with diataxis_type, diataxis_learning_goals, diataxis_goal, or diataxis_describes."
+    },
+    {
+      "text": "Uses Diataxis terminology correctly (quadrants, modes, tutorials vs how-to distinction)",
+      "passed": true,
+      "evidence": "Uses compass, quadrant, mode purity with numerical scores, acquisition/application terminology. Correctly identifies mixed-mode documents with split recommendations."
+    }
+  ],
+  "summary": { "passed": 6, "failed": 0, "total": 6, "pass_rate": 1.0 }
+}

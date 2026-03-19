@@ -1,0 +1,161 @@
+{
+  "metadata": {
+    "skill_name": "documentation-review (4 skills)",
+    "skill_path": "/Users/AllenR1_1/Projects/zircote/documentation-review/skills/",
+    "executor_model": "claude-opus-4-6",
+    "timestamp": "2026-03-19T16:15:00Z",
+    "evals_run": [
+      "docstandards-eval1",
+      "changelog-eval1",
+      "apidocs-eval1",
+      "diataxis-eval1"
+    ],
+    "runs_per_configuration": 1,
+    "iteration": 2,
+    "previous_iteration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "readme-review-go-cli",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "readme-review-go-cli",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.83,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "changelog-v240-release-entry",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "changelog-v240-release-entry",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.67,
+        "passed": 4,
+        "failed": 2,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "fastapi-openapi-review",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "fastapi-openapi-review",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "diataxis-classification-gap-analysis",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "diataxis-classification-gap-analysis",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.33,
+        "passed": 2,
+        "failed": 4,
+        "total": 6,
+        "errors": 0
+      }
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": { "mean": 1.0, "min": 1.0, "max": 1.0 },
+      "total_passed": 24,
+      "total_failed": 0,
+      "total_assertions": 24
+    },
+    "without_skill": {
+      "pass_rate": { "mean": 0.71, "min": 0.33, "max": 1.0 },
+      "total_passed": 17,
+      "total_failed": 7,
+      "total_assertions": 24
+    },
+    "delta": {
+      "pass_rate": "+0.29",
+      "assertions_gained": "+7"
+    }
+  },
+  "iteration_comparison": {
+    "iteration_1_with_skill": {
+      "mean": 0.96,
+      "total_passed": 23,
+      "total_failed": 1
+    },
+    "iteration_2_with_skill": {
+      "mean": 1.0,
+      "total_passed": 24,
+      "total_failed": 0
+    },
+    "improvement": "+1 assertion (changelog comparison links fixed)"
+  },
+  "notes": [
+    "FIXED: Changelog with-skill now passes 6/6 (was 5/6). The 'Critical: Comparison Links' section added in iteration-2 directly caused the agent to include comparison links and cite the skill's guidance.",
+    "STABLE: Diataxis delta remains +67% — the strongest skill differentiation. Without the skill, agents consistently miss compass terminology, coverage matrices, diataxis_type frontmatter, and mode purity assessment.",
+    "IMPROVED: Documentation-standards baseline rose from 67% to 83% (the without-skill agent happened to include code examples this run). With-skill remains 100%.",
+    "NON-DISCRIMINATING: API documentation assertions still pass 100% both with and without skill. Qualitative difference is visible (skill produces structured 6-step review workflow, severity ratings, checklist) but current assertions don't capture this. Consider adding assertions for: review workflow structure, severity ratings, quality checklist application.",
+    "With-skill achieves 100% across all 4 evals — no further assertion-level improvements needed. Future work should focus on adding discriminating assertions for api-documentation and expanding the eval set."
+  ]
+}

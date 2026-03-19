@@ -1,0 +1,31 @@
+{
+  "eval_id": 3,
+  "eval_name": "fastapi-openapi-review",
+  "prompt": "I have a FastAPI app with about 20 endpoints but no OpenAPI customization. Review what's missing and help me improve the spec.",
+  "assertions": [
+    {
+      "text": "Identifies need for endpoint descriptions and summaries",
+      "type": "specific_recommendation"
+    },
+    {
+      "text": "Recommends adding request/response examples",
+      "type": "specific_recommendation"
+    },
+    {
+      "text": "Recommends documenting error responses (400, 404, 500)",
+      "type": "specific_recommendation"
+    },
+    {
+      "text": "Covers authentication/security scheme documentation",
+      "type": "specific_recommendation"
+    },
+    {
+      "text": "References OpenAPI 3.x patterns or FastAPI-specific decorators",
+      "type": "domain_specificity"
+    },
+    {
+      "text": "Provides actionable code examples showing how to improve (e.g., response_model, summary, description parameters)",
+      "type": "output_quality"
+    }
+  ]
+}

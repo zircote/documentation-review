@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies need for endpoint descriptions and summaries",
+      "passed": true,
+      "evidence": "Section 2 covers endpoint summaries and descriptions extensively. References the skill's '7 required elements per endpoint'. Shows FastAPI summary= and description= parameters."
+    },
+    {
+      "text": "Recommends adding request/response examples",
+      "passed": true,
+      "evidence": "Section 5 dedicated to examples. References the skill's 'advanced patterns' for multiple examples per endpoint. Includes OpenAPI example and examples syntax."
+    },
+    {
+      "text": "Recommends documenting error responses (400, 404, 500)",
+      "passed": true,
+      "evidence": "Section 4 covers response documentation with shared error schema using $ref, per-status-code examples, and FastAPI responses= parameter."
+    },
+    {
+      "text": "Covers authentication/security scheme documentation",
+      "passed": true,
+      "evidence": "Section 7 covers security schemes with bearerAuth definition and per-endpoint security overrides. References the skill's security scheme patterns."
+    },
+    {
+      "text": "References OpenAPI 3.x patterns or FastAPI-specific decorators",
+      "passed": true,
+      "evidence": "Throughout: references OpenAPI 3.1, uses FastAPI-specific decorators (response_model, tags, summary, operation_id), mentions skill's documentation quality checklist."
+    },
+    {
+      "text": "Provides actionable code examples showing how to improve",
+      "passed": true,
+      "evidence": "Every section includes concrete Python code fixes using FastAPI decorators. Section 1 shows full app= FastAPI() with metadata, Section 2 shows @app.get() with summary/description/operation_id."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Classifies documents using the two Diataxis axes (action/cognition, acquisition/application)",
+      "passed": true,
+      "evidence": "Every document classification includes explicit compass analysis: 'Compass: Action + Acquisition', 'Compass: Cognition + Application', etc. The compass table is reproduced at the top."
+    },
+    {
+      "text": "Produces a coverage matrix table (feature/component x quadrant)",
+      "passed": true,
+      "evidence": "Lines 146-160: Full coverage matrix with 9 features/components mapped against all 4 quadrants. Uses YES/--/(mixed) notation with asterisks for documents needing splits."
+    },
+    {
+      "text": "Identifies specific gaps (missing tutorials, missing reference, etc.)",
+      "passed": true,
+      "evidence": "Lines 164-175: Three critical gaps identified with specific recommendations. Includes missing tutorials for Auth/Deployment, missing reference docs for 3 features, and missing how-to guides for API usage."
+    },
+    {
+      "text": "Prioritizes gaps by user impact",
+      "passed": true,
+      "evidence": "Gap analysis organized into 'Critical Gaps (high user impact)' and 'Moderate Gaps' tiers. Critical gaps explain impact: 'new users...fall back on how-to docs which assume competence they may not yet have.'"
+    },
+    {
+      "text": "Recommends diataxis_type frontmatter additions",
+      "passed": true,
+      "evidence": "Every document classification includes 'Recommended frontmatter:' with exact YAML blocks including diataxis_type, diataxis_learning_goals, diataxis_goal, diataxis_describes, or diataxis_topic as appropriate."
+    },
+    {
+      "text": "Uses Diataxis terminology correctly (quadrants, modes, tutorials vs how-to distinction)",
+      "passed": true,
+      "evidence": "Methodology section uses 'compass' and 'quadrant'. Mode purity assessed per-document with severity levels (CRITICAL/MAJOR/MINOR/CLEAN). Plugin-development correctly distinguished as how-to despite tutorial-like filename. Changelog correctly noted as outside Diataxis scope."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Uses Keep a Changelog format with ## [2.4.0] heading and date",
+      "passed": true,
+      "evidence": "Line 1: '## [2.4.0] - 2026-03-19' — correct format."
+    },
+    {
+      "text": "Groups features under ### Added section",
+      "passed": true,
+      "evidence": "Lines 3-7: '### Added' section with 3 feature entries."
+    },
+    {
+      "text": "Groups bug fixes under ### Fixed section",
+      "passed": true,
+      "evidence": "Lines 9-12: '### Fixed' section with 2 fix entries."
+    },
+    {
+      "text": "All 5 changes are present (OAuth2, CSV export, dark mode, WebSocket leak, timezone fix)",
+      "passed": true,
+      "evidence": "All 5 changes present: OAuth2 Support, CSV Export, Dark Mode, WebSocket Handler fix, Scheduled Jobs timezone fix."
+    },
+    {
+      "text": "Descriptions are clear and user-focused, not vague single words",
+      "passed": true,
+      "evidence": "Each entry has bold category label + descriptive text explaining user impact: 'enabling offline analysis and data sharing', 'caused tasks to execute at wrong times'. Goes beyond bare change description."
+    },
+    {
+      "text": "Includes comparison link reference at bottom (e.g., [2.4.0]: .../compare/v2.3.0...v2.4.0)",
+      "passed": false,
+      "evidence": "No comparison link at the bottom of the output. The agent's summary mentions 'corresponding comparison links updated at the bottom of the file' but the actual output file does not include them."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 1,
+    "total": 6,
+    "pass_rate": 0.83
+  }
+}

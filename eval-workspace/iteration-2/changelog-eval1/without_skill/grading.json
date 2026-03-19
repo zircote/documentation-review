@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Uses Keep a Changelog format with ## [2.4.0] heading and date",
+      "passed": true,
+      "evidence": "Line 1: '## [2.4.0] - 2026-03-19'"
+    },
+    {
+      "text": "Groups features under ### Added section",
+      "passed": true,
+      "evidence": "Lines 3-7: ### Added with 3 entries."
+    },
+    {
+      "text": "Groups bug fixes under ### Fixed section",
+      "passed": true,
+      "evidence": "Lines 9-12: ### Fixed with 2 entries."
+    },
+    {
+      "text": "All 5 changes are present",
+      "passed": true,
+      "evidence": "All 5 present as single-line items."
+    },
+    {
+      "text": "Descriptions are clear and user-focused",
+      "passed": false,
+      "evidence": "Bare minimum: 'OAuth2 support for authentication flows', 'Memory leak in WebSocket handler'. No user impact context, no bold labels."
+    },
+    {
+      "text": "Includes comparison link reference",
+      "passed": false,
+      "evidence": "No comparison link present in output."
+    }
+  ],
+  "summary": { "passed": 4, "failed": 2, "total": 6, "pass_rate": 0.67 }
+}

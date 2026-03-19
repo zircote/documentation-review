@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Review identifies missing standard README sections",
+      "passed": true,
+      "evidence": "Identifies 7 of 8 standard sections missing, plus title section incomplete. Covers features, installation, usage, configuration, API reference, contributing, license."
+    },
+    {
+      "text": "Recommends adding installation/setup instructions",
+      "passed": true,
+      "evidence": "Section 4 covers installation with go install, binary releases, and Go version prerequisites."
+    },
+    {
+      "text": "Recommends adding usage examples with code blocks",
+      "passed": true,
+      "evidence": "Section 5 covers quick start/usage with code block examples."
+    },
+    {
+      "text": "Mentions need for description/overview section",
+      "passed": true,
+      "evidence": "Section 1: title is partially present but lacks description. Includes markdown template fix."
+    },
+    {
+      "text": "Output is structured with clear sections or checklist format",
+      "passed": true,
+      "evidence": "Uses numbered findings by section, applies full review checklist from skill with pass/fail status, includes priority recommendations with time estimates."
+    },
+    {
+      "text": "Mentions Go-specific considerations (godoc, go install, module path)",
+      "passed": true,
+      "evidence": "6 matches for godoc/go doc/pkg.go.dev/Go Reference. Includes godoc coverage guidance and pkg.go.dev badge recommendation."
+    }
+  ],
+  "summary": { "passed": 6, "failed": 0, "total": 6, "pass_rate": 1.0 }
+}

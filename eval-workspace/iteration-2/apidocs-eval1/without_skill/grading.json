@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies need for endpoint descriptions and summaries",
+      "passed": true,
+      "evidence": "Sections 2-3 cover endpoint summaries/descriptions."
+    },
+    {
+      "text": "Recommends adding request/response examples",
+      "passed": true,
+      "evidence": "Section 5 covers request body examples."
+    },
+    {
+      "text": "Recommends documenting error responses (400, 404, 500)",
+      "passed": true,
+      "evidence": "Section 6 covers missing error responses."
+    },
+    {
+      "text": "Covers authentication/security scheme documentation",
+      "passed": true,
+      "evidence": "Section 7 covers security schemes."
+    },
+    {
+      "text": "References OpenAPI 3.x patterns or FastAPI-specific decorators",
+      "passed": true,
+      "evidence": "Uses FastAPI decorators throughout."
+    },
+    {
+      "text": "Provides actionable code examples showing how to improve",
+      "passed": true,
+      "evidence": "Each section includes concrete FastAPI code fixes."
+    }
+  ],
+  "summary": { "passed": 6, "failed": 0, "total": 6, "pass_rate": 1.0 }
+}

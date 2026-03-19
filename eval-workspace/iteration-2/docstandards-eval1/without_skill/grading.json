@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Review identifies missing standard README sections",
+      "passed": true,
+      "evidence": "Identifies 12 missing sections including description, installation, usage, command reference, configuration, prerequisites, build from source, contributing, testing, license, badges, changelog."
+    },
+    {
+      "text": "Recommends adding installation/setup instructions",
+      "passed": true,
+      "evidence": "Section 2 covers go install, pre-built binaries, prerequisites."
+    },
+    {
+      "text": "Recommends adding usage examples with code blocks",
+      "passed": true,
+      "evidence": "Section 3 covers usage/quick start with recommendation to include copy-paste examples."
+    },
+    {
+      "text": "Mentions need for description/overview section",
+      "passed": true,
+      "evidence": "Section 1: 'A one- or two-sentence description tells visitors what the tool does.'"
+    },
+    {
+      "text": "Output is structured with clear sections or checklist format",
+      "passed": true,
+      "evidence": "Numbered sections with status indicators and summary table at end."
+    },
+    {
+      "text": "Mentions Go-specific considerations (godoc, go install, module path)",
+      "passed": false,
+      "evidence": "0 matches for godoc/go doc/pkg.go.dev. Mentions go install but no language-specific doc toolchain awareness."
+    }
+  ],
+  "summary": { "passed": 5, "failed": 1, "total": 6, "pass_rate": 0.83 }
+}

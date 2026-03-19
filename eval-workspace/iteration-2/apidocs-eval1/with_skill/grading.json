@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies need for endpoint descriptions and summaries",
+      "passed": true,
+      "evidence": "Step 2 Required Elements table rates Summary as 'Medium' gap and Description as 'High' gap. Detailed analysis."
+    },
+    {
+      "text": "Recommends adding request/response examples",
+      "passed": true,
+      "evidence": "Step 3 explicitly states 'No examples exist to validate' and provides remediation with FastAPI Field(examples=[...])."
+    },
+    {
+      "text": "Recommends documenting error responses (400, 404, 500)",
+      "passed": true,
+      "evidence": "Step 4 Error Response Audit: 'only 200 and 422 are documented; all other error codes are absent.' Rated as Critical."
+    },
+    {
+      "text": "Covers authentication/security scheme documentation",
+      "passed": true,
+      "evidence": "Step 5 Authentication Verification: 'missing securitySchemes and security entries.' Rated as Critical."
+    },
+    {
+      "text": "References OpenAPI 3.x patterns or FastAPI-specific decorators",
+      "passed": true,
+      "evidence": "Explicitly follows skill's 6-step review workflow, references 7 required elements, uses FastAPI decorators throughout."
+    },
+    {
+      "text": "Provides actionable code examples showing how to improve",
+      "passed": true,
+      "evidence": "13-item remediation plan with FastAPI-specific code patterns and estimated effort."
+    }
+  ],
+  "summary": { "passed": 6, "failed": 0, "total": 6, "pass_rate": 1.0 }
+}

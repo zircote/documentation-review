@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Review identifies missing standard README sections (description, installation, usage, examples, contributing, license)",
+      "passed": true,
+      "evidence": "Sections 1-10 cover description, installation, usage, command reference, configuration, build from source, examples, contributing, license, and badges."
+    },
+    {
+      "text": "Recommends adding installation/setup instructions",
+      "passed": true,
+      "evidence": "Section 2 covers go install, prebuilt binaries, and prerequisites."
+    },
+    {
+      "text": "Recommends adding usage examples with code blocks",
+      "passed": false,
+      "evidence": "Section 3 mentions including examples but does not provide actual code block examples — only describes what to include. The README skeleton at the end is a plain outline without code."
+    },
+    {
+      "text": "Mentions need for description/overview section",
+      "passed": true,
+      "evidence": "Section 1: 'A one- or two-sentence description tells visitors what the tool does.'"
+    },
+    {
+      "text": "Output is structured with clear sections or checklist format",
+      "passed": true,
+      "evidence": "Uses numbered sections with status indicators, a priority table (P0-P3), and a recommended README structure. Well-organized but uses a different format than the skill's checklist."
+    },
+    {
+      "text": "Mentions Go-specific considerations (godoc, go install, module path)",
+      "passed": false,
+      "evidence": "Mentions 'go install' and 'go build' but does NOT mention godoc, doc comments, or Go Reference badge. No language-specific documentation toolchain awareness."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 2,
+    "total": 6,
+    "pass_rate": 0.67
+  }
+}

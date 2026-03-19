@@ -1,0 +1,31 @@
+{
+  "eval_id": 4,
+  "eval_name": "diataxis-classification-gap-analysis",
+  "prompt": "We have about 30 markdown files in docs/ and nobody knows which ones are tutorials vs reference vs guides. Classify them and show me where the gaps are.",
+  "assertions": [
+    {
+      "text": "Classifies documents using the two Diataxis axes (action/cognition, acquisition/application)",
+      "type": "framework_application"
+    },
+    {
+      "text": "Produces a coverage matrix table (feature/component x quadrant)",
+      "type": "output_format"
+    },
+    {
+      "text": "Identifies specific gaps (missing tutorials, missing reference, etc.)",
+      "type": "specific_recommendation"
+    },
+    {
+      "text": "Prioritizes gaps by user impact",
+      "type": "output_quality"
+    },
+    {
+      "text": "Recommends diataxis_type frontmatter additions",
+      "type": "domain_specificity"
+    },
+    {
+      "text": "Uses Diataxis terminology correctly (quadrants, modes, tutorials vs how-to distinction)",
+      "type": "framework_application"
+    }
+  ]
+}

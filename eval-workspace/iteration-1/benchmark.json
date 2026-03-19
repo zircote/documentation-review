@@ -1,0 +1,145 @@
+{
+  "metadata": {
+    "skill_name": "documentation-review (4 skills)",
+    "skill_path": "/Users/AllenR1_1/Projects/zircote/documentation-review/skills/",
+    "executor_model": "claude-opus-4-6",
+    "timestamp": "2026-03-19T15:30:00Z",
+    "evals_run": [
+      "docstandards-eval1",
+      "changelog-eval1",
+      "apidocs-eval1",
+      "diataxis-eval1"
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "readme-review-go-cli",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "readme-review-go-cli",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.67,
+        "passed": 4,
+        "failed": 2,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "changelog-v240-release-entry",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.83,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "changelog-v240-release-entry",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.67,
+        "passed": 4,
+        "failed": 2,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "fastapi-openapi-review",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "fastapi-openapi-review",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "diataxis-classification-gap-analysis",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "errors": 0
+      }
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "diataxis-classification-gap-analysis",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.33,
+        "passed": 2,
+        "failed": 4,
+        "total": 6,
+        "errors": 0
+      }
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": { "mean": 0.96, "min": 0.83, "max": 1.0 },
+      "total_passed": 23,
+      "total_failed": 1,
+      "total_assertions": 24
+    },
+    "without_skill": {
+      "pass_rate": { "mean": 0.67, "min": 0.33, "max": 1.0 },
+      "total_passed": 16,
+      "total_failed": 8,
+      "total_assertions": 24
+    },
+    "delta": {
+      "pass_rate": "+0.29",
+      "assertions_gained": "+7"
+    }
+  },
+  "notes": [
+    "Diataxis skill shows the largest delta (+67%): without the skill, the agent uses Diataxis categories correctly but misses framework-specific patterns (compass terminology, coverage matrix, frontmatter fields, mode purity assessment).",
+    "API documentation eval shows no delta (both 100%): Claude already knows FastAPI/OpenAPI well. The skill adds structure (e.g., references skill's quality checklist) but doesn't change pass/fail on these assertions.",
+    "Changelog with-skill produces richer descriptions with user-impact context but missed the comparison link (83% vs 67%). The comparison link assertion fails both with and without skill — may need skill improvement.",
+    "Documentation-standards with-skill adds Go-specific godoc guidance and formal review checklist — both absent without the skill (+33% delta)."
+  ]
+}

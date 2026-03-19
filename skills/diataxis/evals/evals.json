@@ -1,0 +1,111 @@
+{
+  "skill_name": "diataxis",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We have about 30 markdown files in docs/ and nobody knows which ones are tutorials vs reference vs guides. Can you classify them all and show me where the gaps are?",
+      "expected_output": "Classification of each document into a Diataxis quadrant with a coverage matrix showing gaps per feature/component and prioritized recommendations",
+      "files": [],
+      "expectations": [
+        "Classifies documents using the two Diataxis axes (action/cognition, acquisition/application)",
+        "Produces a coverage matrix table (feature x quadrant)",
+        "Identifies specific gaps (missing tutorials, missing reference, etc.)",
+        "Prioritizes gaps by user impact",
+        "Recommends frontmatter additions (diataxis_type)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm writing a new doc about how our authentication system works — the design decisions behind choosing OAuth2 over API keys, the token refresh flow concept, and why we use short-lived tokens. Which Diataxis quadrant is this and can you help me structure it?",
+      "expected_output": "Identifies this as Explanation (understanding-oriented), applies the explanation template with appropriate tone and cross-references",
+      "files": [],
+      "expectations": [
+        "Correctly classifies as Explanation quadrant",
+        "Applies explanation structure template (Background, How it works, Why chosen, Alternatives, Implications)",
+        "Uses discursive, reflective tone guidance",
+        "Suggests diataxis_type: explanation frontmatter",
+        "Recommends cross-references to related tutorial/reference/how-to docs"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We have a setup guide that starts as a tutorial ('In this guide you'll learn...') but halfway through turns into a reference dump of every config option. The file is docs/getting-started.md. Can you review it against Diataxis and tell me how to fix it?",
+      "expected_output": "Identifies quadrant mixing (tutorial drifting into reference), recommends splitting into separate tutorial and reference documents with clear boundaries",
+      "files": [],
+      "expectations": [
+        "Identifies the document as mixed-mode (tutorial + reference)",
+        "Flags the specific point where mode shifts",
+        "Recommends splitting into separate documents",
+        "Provides structure for the tutorial portion",
+        "Provides structure for the reference portion",
+        "References Diataxis mode purity criteria"
+      ]
+    }
+  ],
+  "trigger_evals": [
+    {
+      "query": "classify our documentation into Diataxis quadrants",
+      "should_trigger": true
+    },
+    {
+      "query": "do a gap analysis on our docs — which types of documentation are we missing",
+      "should_trigger": true
+    },
+    {
+      "query": "this guide mixes tutorial steps with reference tables — help me split it properly",
+      "should_trigger": true
+    },
+    {
+      "query": "I need to create a new how-to guide for deploying to production, what's the right Diataxis structure",
+      "should_trigger": true
+    },
+    {
+      "query": "review our docs for Diataxis alignment and mode purity",
+      "should_trigger": true
+    },
+    {
+      "query": "organize our docs/ folder by documentation type — tutorials in one place, reference in another",
+      "should_trigger": true
+    },
+    {
+      "query": "should this document be a tutorial or a how-to guide? the user already knows the basics but needs to accomplish a specific task",
+      "should_trigger": true
+    },
+    {
+      "query": "add diataxis_type frontmatter to all our documentation files",
+      "should_trigger": true
+    },
+    {
+      "query": "review our README for markdown formatting issues and broken links",
+      "should_trigger": false
+    },
+    {
+      "query": "generate an OpenAPI 3.1 spec from our Express routes",
+      "should_trigger": false
+    },
+    {
+      "query": "add the v3.0.0 release entry to CHANGELOG.md",
+      "should_trigger": false
+    },
+    {
+      "query": "add JSDoc comments to exported functions in the auth module",
+      "should_trigger": false
+    },
+    {
+      "query": "set up MkDocs with our existing markdown files",
+      "should_trigger": false
+    },
+    {
+      "query": "refactor our database models to use TypeORM",
+      "should_trigger": false
+    },
+    {
+      "query": "improve the writing style in our API reference — too much passive voice",
+      "should_trigger": false
+    },
+    {
+      "query": "create a CONTRIBUTING.md for open source contributors",
+      "should_trigger": false
+    }
+  ]
+}

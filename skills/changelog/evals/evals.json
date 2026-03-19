@@ -1,0 +1,110 @@
+{
+  "skill_name": "changelog",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We just shipped v2.4.0 with three new features and two bug fixes. The CHANGELOG.md hasn't been updated since v2.3.0. Can you add the new release entry? Here's what changed: added OAuth2 support, added CSV export for reports, added dark mode toggle, fixed memory leak in WebSocket handler, fixed incorrect timezone in scheduled jobs.",
+      "expected_output": "A properly formatted Keep a Changelog entry for v2.4.0 with Added and Fixed sections, comparison links, and clear descriptions",
+      "files": [],
+      "expectations": [
+        "Uses Keep a Changelog format with ## [2.4.0] heading",
+        "Groups features under ### Added section",
+        "Groups bug fixes under ### Fixed section",
+        "Includes comparison link at bottom of file",
+        "Descriptions are clear and user-focused, not vague"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I need to set up semantic-release for our monorepo. We use pnpm workspaces and have packages/ with 3 packages. How should I configure .releaserc.json and the GitHub Actions workflow?",
+      "expected_output": "Configuration for semantic-release with .releaserc.json, GitHub Actions workflow YAML, and monorepo-specific guidance",
+      "files": [],
+      "expectations": [
+        "Provides a .releaserc.json configuration",
+        "Includes GitHub Actions workflow YAML",
+        "Covers conventional commits mapping to version bumps",
+        "Addresses monorepo/workspace considerations",
+        "Includes GITHUB_TOKEN permissions setup"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We're doing a major version bump (v1.x to v2.0.0) with breaking changes — we renamed the main config file from .apprc to config.yaml and changed the CLI flag --verbose to --log-level. How should we document this in the changelog with a migration guide?",
+      "expected_output": "A v2.0.0 changelog entry with BREAKING CHANGES section, migration steps for each breaking change, and timeline",
+      "files": [],
+      "expectations": [
+        "Includes BREAKING CHANGES section prominently",
+        "Documents each breaking change with before/after",
+        "Provides migration steps for config file rename",
+        "Provides migration steps for CLI flag change",
+        "Follows Keep a Changelog format"
+      ]
+    }
+  ],
+  "trigger_evals": [
+    {
+      "query": "add the v3.1.0 release notes to our CHANGELOG.md",
+      "should_trigger": true
+    },
+    {
+      "query": "we just merged 15 PRs, can you generate a changelog from the git history since the last tag",
+      "should_trigger": true
+    },
+    {
+      "query": "set up semantic-release with conventional commits for our TypeScript project",
+      "should_trigger": true
+    },
+    {
+      "query": "the changelog has duplicate entries and the format is inconsistent — clean it up",
+      "should_trigger": true
+    },
+    {
+      "query": "prepare release notes for the upcoming v4.0.0 with breaking changes",
+      "should_trigger": true
+    },
+    {
+      "query": "what version bump should a feat: commit trigger vs a fix: commit",
+      "should_trigger": true
+    },
+    {
+      "query": "review our CHANGELOG.md to make sure it follows Keep a Changelog format",
+      "should_trigger": true
+    },
+    {
+      "query": "document the changes between v1.2.0 and v1.3.0 based on the commit log",
+      "should_trigger": true
+    },
+    {
+      "query": "review our README for quality and structure issues",
+      "should_trigger": false
+    },
+    {
+      "query": "generate an OpenAPI spec for our REST endpoints",
+      "should_trigger": false
+    },
+    {
+      "query": "classify our documentation using the Diataxis framework",
+      "should_trigger": false
+    },
+    {
+      "query": "write a tutorial for getting started with our SDK",
+      "should_trigger": false
+    },
+    {
+      "query": "set up GitHub Actions for running our test suite on every PR",
+      "should_trigger": false
+    },
+    {
+      "query": "add JSDoc comments to all exported functions in src/",
+      "should_trigger": false
+    },
+    {
+      "query": "create a CONTRIBUTING.md with our coding standards",
+      "should_trigger": false
+    },
+    {
+      "query": "audit our npm dependencies for security vulnerabilities",
+      "should_trigger": false
+    }
+  ]
+}

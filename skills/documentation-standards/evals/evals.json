@@ -1,0 +1,111 @@
+{
+  "skill_name": "documentation-standards",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just finished building a CLI tool in Go and the README is basically empty — just the project name. Can you review it and tell me what's missing? The file is at ./README.md",
+      "expected_output": "A structured review identifying missing README sections (description, installation, usage, examples, contributing, license) with specific recommendations following documentation standards",
+      "files": [],
+      "expectations": [
+        "Review identifies missing standard README sections",
+        "Recommends adding installation/setup instructions",
+        "Recommends adding usage examples",
+        "Mentions need for description/overview section",
+        "References documentation-standards quality criteria"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Our team docs are a mess — inconsistent headings, no code highlighting, broken links everywhere. Can you give me a checklist of what to fix across our docs/ folder?",
+      "expected_output": "A documentation quality checklist covering formatting, structure, links, and consistency issues with prioritized remediation steps",
+      "files": [],
+      "expectations": [
+        "Provides a structured checklist or review framework",
+        "Covers heading hierarchy issues",
+        "Covers code block formatting (language specification)",
+        "Covers link validation",
+        "Covers consistency and terminology issues",
+        "Prioritizes fixes by impact"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I'm writing docs for a Python library that uses Sphinx. All my public functions need docstrings but I'm not sure what format to use — Google style vs NumPy style vs rST. What do you recommend and what should each docstring include?",
+      "expected_output": "Guidance on Python docstring formats with recommendation, required sections (Args, Returns, Raises), and examples showing the chosen format",
+      "files": [],
+      "expectations": [
+        "Covers Google, NumPy, and rST docstring styles",
+        "Provides a clear recommendation with rationale",
+        "Shows example docstring with Args/Returns/Raises sections",
+        "Mentions Sphinx integration considerations",
+        "Recommends consistency across the project"
+      ]
+    }
+  ],
+  "trigger_evals": [
+    {
+      "query": "review my project's README for quality issues",
+      "should_trigger": true
+    },
+    {
+      "query": "the markdown in our docs folder has inconsistent heading levels and missing code fences, can you audit it",
+      "should_trigger": true
+    },
+    {
+      "query": "what are best practices for writing technical documentation",
+      "should_trigger": true
+    },
+    {
+      "query": "our Go project needs godoc comments on all exported functions — help me set up the review criteria",
+      "should_trigger": true
+    },
+    {
+      "query": "check if our docs have proper alt text on images and valid links",
+      "should_trigger": true
+    },
+    {
+      "query": "I need to write a rustdoc comment for this public struct, what sections are required",
+      "should_trigger": true
+    },
+    {
+      "query": "improve the writing style in our API guide — it uses passive voice everywhere",
+      "should_trigger": true
+    },
+    {
+      "query": "fix the documentation structure in docs/setup.md — the headings are all wrong",
+      "should_trigger": true
+    },
+    {
+      "query": "generate an OpenAPI 3.1 spec for my REST API endpoints",
+      "should_trigger": false
+    },
+    {
+      "query": "classify our docs into Diataxis quadrants",
+      "should_trigger": false
+    },
+    {
+      "query": "update the changelog with the latest release notes for v2.3.0",
+      "should_trigger": false
+    },
+    {
+      "query": "write unit tests for the authentication module",
+      "should_trigger": false
+    },
+    {
+      "query": "set up a CI pipeline with GitHub Actions for our Node project",
+      "should_trigger": false
+    },
+    {
+      "query": "create a how-to guide for deploying to AWS — make sure it follows the tutorial template",
+      "should_trigger": false
+    },
+    {
+      "query": "refactor the database access layer to use connection pooling",
+      "should_trigger": false
+    },
+    {
+      "query": "review this pull request for code quality issues",
+      "should_trigger": false
+    }
+  ]
+}

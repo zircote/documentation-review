@@ -1,0 +1,115 @@
+{
+  "skill_name": "api-documentation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a FastAPI app with about 20 endpoints but no OpenAPI customization — it's all auto-generated with default descriptions. Can you review what's missing and help me improve the spec? The app is in src/main.py.",
+      "expected_output": "Review following the skill's 6-step review workflow with required elements check, quality checklist, and severity-rated findings",
+      "files": [],
+      "expectations": [
+        "Identifies need for endpoint descriptions and summaries",
+        "Recommends adding request/response examples",
+        "Recommends documenting error responses (400, 404, 500)",
+        "Covers authentication/security scheme documentation",
+        "References OpenAPI 3.x patterns",
+        "Follows a structured review workflow (inventory endpoints, check required elements, validate examples, audit errors, verify auth, run checklist)",
+        "Applies a quality checklist with pass/fail or severity ratings per item",
+        "Mentions the 7 required elements per endpoint (method/path, summary, description, parameters, request body, responses, examples)",
+        "Recommends documenting pagination patterns for list endpoints",
+        "Recommends documenting rate limits"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We need to document our WebSocket events API for a real-time chat system. Events include user.joined, user.left, message.sent, message.edited, typing.start, typing.stop. What format should I use?",
+      "expected_output": "AsyncAPI specification structure for WebSocket events with channel definitions, message schemas, and payload examples for each event type",
+      "files": [],
+      "expectations": [
+        "Recommends AsyncAPI for event-driven documentation",
+        "Provides channel/event structure for the listed events",
+        "Includes message payload schemas",
+        "Shows example payloads for at least 2 events",
+        "Covers WebSocket-specific considerations"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Our REST API has grown to 50+ endpoints across 8 resource groups but the docs are just a flat list in a markdown file. Help me restructure this into a proper API reference with OpenAPI.",
+      "expected_output": "Strategy for restructuring flat API docs into organized OpenAPI spec with tags, component schemas, and documentation portal recommendations",
+      "files": [],
+      "expectations": [
+        "Recommends using OpenAPI tags for grouping by resource",
+        "Suggests component schemas for reusable types",
+        "Covers pagination, error response, and auth patterns",
+        "Recommends a documentation portal (Swagger UI, ReDoc, etc.)",
+        "Addresses migration strategy from flat markdown to structured spec"
+      ]
+    }
+  ],
+  "trigger_evals": [
+    {
+      "query": "generate an OpenAPI 3.1 spec for my Express.js REST API",
+      "should_trigger": true
+    },
+    {
+      "query": "our API docs are missing error responses and examples — review and fix them",
+      "should_trigger": true
+    },
+    {
+      "query": "document our Kafka event channels using AsyncAPI format",
+      "should_trigger": true
+    },
+    {
+      "query": "set up Swagger UI for our Spring Boot application",
+      "should_trigger": true
+    },
+    {
+      "query": "review the API reference section of our docs for completeness — are all endpoints documented with params and responses?",
+      "should_trigger": true
+    },
+    {
+      "query": "create request/response examples for our user management endpoints",
+      "should_trigger": true
+    },
+    {
+      "query": "add authentication documentation to our OpenAPI spec — we use JWT bearer tokens",
+      "should_trigger": true
+    },
+    {
+      "query": "convert our Postman collection to an OpenAPI 3.0 spec",
+      "should_trigger": true
+    },
+    {
+      "query": "review our README.md for formatting and structure issues",
+      "should_trigger": false
+    },
+    {
+      "query": "update the changelog with the v2.1.0 release notes",
+      "should_trigger": false
+    },
+    {
+      "query": "classify our docs into Diataxis quadrants — tutorials vs reference vs explanation",
+      "should_trigger": false
+    },
+    {
+      "query": "write a getting-started tutorial for new developers",
+      "should_trigger": false
+    },
+    {
+      "query": "set up semantic-release for automated versioning",
+      "should_trigger": false
+    },
+    {
+      "query": "add rustdoc comments to all public structs in our Rust crate",
+      "should_trigger": false
+    },
+    {
+      "query": "refactor the authentication middleware to use OAuth2",
+      "should_trigger": false
+    },
+    {
+      "query": "improve the writing style in our troubleshooting guide",
+      "should_trigger": false
+    }
+  ]
+}

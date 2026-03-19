@@ -8,7 +8,7 @@ This is a Claude Code plugin for comprehensive documentation management: review,
 
 ## Key Components
 
-- **Skills**: 3 skills covering documentation standards, changelog management, and API documentation
+- **Skills**: 4 skills covering documentation standards, changelog management, API documentation, and diataxis framework
 - **Commands**: 6 commands for documentation lifecycle management
 - **Agents**: 2 agents for documentation writing and review
 
@@ -16,7 +16,7 @@ This is a Claude Code plugin for comprehensive documentation management: review,
 
 ```
 .claude-plugin/plugin.json  # Plugin manifest
-skills/                     # 3 skill directories with SKILL.md and references
+skills/                     # 4 skill directories with SKILL.md and references
 commands/                   # 6 documentation commands
 agents/                     # 2 documentation agents
 templates/                  # Configuration templates
@@ -39,5 +39,7 @@ Then test:
 - `/doc-review` command
 - `/doc-create` command
 - `/doc-update` command
-- `/changelog` command
+- `/doc-cleanup` command
+- `/doc-setup` command
+- `/doc-diataxis` command
 - Agent triggering for documentation tasks

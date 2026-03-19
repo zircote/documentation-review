@@ -55,6 +55,17 @@ api_docs:
   # dokka:
   #   enabled: true
   #   build_command: "./gradlew dokkaHtml"
+  # docc:
+  #   enabled: true
+  #   build_command: "swift package generate-documentation"
+  #   target: null                 # Specific target, or null for all
+  # docfx:
+  #   enabled: true
+  #   build_command: "docfx build"
+  #   config_path: docfx.json
+  # exdoc:
+  #   enabled: true
+  #   build_command: "mix docs"
 
 # Static site generator integration
 site_generator:

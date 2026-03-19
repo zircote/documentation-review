@@ -4,6 +4,7 @@ What does this change do?
 
 ## Checklist
 
-- [ ] I ran `npm run typecheck` and `npm run build`
-- [ ] I updated docs (README / CLAUDE.md) if behavior changed
-- [ ] I considered security implications (tokens, shell commands, filesystem access)
+- [ ] Command/skill/agent structure follows plugin conventions
+- [ ] Frontmatter is valid and `diataxis_type` is set where applicable
+- [ ] CHANGELOG.md updated for user-facing changes
+- [ ] Tested with `/doc-review` on affected files

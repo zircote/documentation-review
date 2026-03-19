@@ -25,7 +25,7 @@ Sections:
 1. HEADER: "Documentation Review" - Claude Code Plugin for Documentation Excellence
 2. CORE CAPABILITIES (4 quadrants): Review, Create, Update, Cleanup
 3. SUPPORTED FORMATS: Markdown, MkDocs, Sphinx, Docusaurus, OpenAPI, AsyncAPI
-4. KEY COMMANDS: /doc-review → /doc-create → /doc-update → /changelog
+4. KEY COMMANDS: /doc-review → /doc-create → /doc-update → /doc-diataxis
 5. FOOTER: AI-Powered • MIT License • v0.1.0
 
 Color palette: Warm amber (#F59E0B), deep teal (#0D9488), coral (#F97316), cream (#FFFBEB)
@@ -40,6 +40,7 @@ Style: Professional, clean lines, rounded corners, subtle shadows
 - **Documentation Creation** - Generate new docs from codebase analysis (README, API docs, templates)
 - **Documentation Updates** - Keep docs current with codebase changes
 - **Documentation Cleanup** - Identify obsolete or outdated content
+- **Diátaxis Framework** - Classify and audit docs against Diátaxis quadrants (tutorials, how-to, reference, explanation)
 - **Changelog Management** - Maintain CHANGELOG.md with Keep a Changelog format
 - **Quality Validation** - Automatic checks on markdown file edits
 - **Multi-format Support** - Markdown with awareness of MkDocs, Sphinx, Docusaurus
@@ -73,7 +74,7 @@ Or copy to your project's `.claude-plugin/` directory.
 | `/doc-update [path]` | Update outdated documentation with current information |
 | `/doc-cleanup` | Identify and report obsolete documentation |
 | `/doc-setup` | Interactive setup for project configuration |
-| `/changelog [action]` | Manage CHANGELOG.md (add, review, generate, preview) |
+| `/doc-diataxis [action] [path]` | Analyze docs against Diátaxis framework (classify, review, gaps, audit) |
 
 ## Agents
 
@@ -87,6 +88,7 @@ Or copy to your project's `.claude-plugin/` directory.
 - **documentation-standards** - Markdown best practices, structure guidelines, writing quality
 - **api-documentation** - OpenAPI/Swagger/AsyncAPI patterns and endpoint documentation
 - **changelog** - Keep a Changelog format, semantic-release, conventional commits mapping
+- **diataxis** - Diátaxis documentation framework quadrant classification and analysis
 
 ## Configuration
 
@@ -153,9 +155,9 @@ documentation-review/
 │   ├── doc-reviewer.md
 │   └── doc-writer.md
 ├── commands/
-│   ├── changelog.md
 │   ├── doc-cleanup.md
 │   ├── doc-create.md
+│   ├── doc-diataxis.md
 │   ├── doc-review.md
 │   ├── doc-setup.md
 │   └── doc-update.md
@@ -165,6 +167,10 @@ documentation-review/
 │   │   ├── examples/
 │   │   └── references/
 │   ├── changelog/
+│   │   ├── SKILL.md
+│   │   ├── examples/
+│   │   └── references/
+│   ├── diataxis/
 │   │   ├── SKILL.md
 │   │   ├── examples/
 │   │   └── references/
@@ -206,9 +212,14 @@ documentation-review/
 /doc-cleanup
 ```
 
-### Add changelog entry
+### Classify docs against Diátaxis framework
 ```bash
-/changelog add "Added new feature X"
+/doc-diataxis classify docs/
+```
+
+### Audit documentation for Diátaxis coverage gaps
+```bash
+/doc-diataxis audit
 ```
 
 ## Contributing

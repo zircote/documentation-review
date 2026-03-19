@@ -1,0 +1,30 @@
+{
+  "spec_version": "2026-02-14",
+  "name": "documentation-review",
+  "version": "0.1.0",
+  "description": "Comprehensive documentation management: review, create, update, and maintain high-quality documentation with Diataxis framework support",
+  "author": {
+    "name": "zircote",
+    "url": "https://github.com/zircote"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/zircote/documentation-review",
+  "scope": "project",
+  "components": {
+    "skills": [
+      "skills/api-documentation",
+      "skills/changelog",
+      "skills/diataxis",
+      "skills/documentation-standards"
+    ],
+    "agents": ["agents/doc-reviewer", "agents/doc-writer"],
+    "commands": [
+      "commands/doc-cleanup.md",
+      "commands/doc-create.md",
+      "commands/doc-diataxis.md",
+      "commands/doc-review.md",
+      "commands/doc-setup.md",
+      "commands/doc-update.md"
+    ]
+  }
+}

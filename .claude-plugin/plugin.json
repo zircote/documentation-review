@@ -1,7 +1,7 @@
 {
   "spec_version": "2026-02-14",
   "name": "documentation-review",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Comprehensive documentation management: review, create, update, and maintain high-quality documentation with Diataxis framework support",
   "author": {
     "name": "zircote",
@@ -26,7 +26,7 @@
       "skills/diataxis",
       "skills/documentation-standards"
     ],
-    "agents": ["agents/doc-reviewer", "agents/doc-writer"],
+    "agents": ["agents/doc-reviewer.md", "agents/doc-writer.md"],
     "commands": [
       "commands/doc-cleanup.md",
       "commands/doc-create.md",
